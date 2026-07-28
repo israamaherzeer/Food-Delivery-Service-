@@ -1,0 +1,104 @@
+.pageContainer {
+  background-color: #f0f0f0; /* لون الخلفية الرمادي الفاتح جدًا من الصورة */
+  min-height: 100vh;
+  color: #333;
+}
+
+.contentWrapper {
+  width: min(1200px, 100%);
+  margin: 40px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.headerSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.searchContainer {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af; /* لون أيقونة البحث */
+}
+
+.searchInput {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px; /* مطابقة للـ PDF */
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+  background-color: #ffffff; /* خلفية بيضاء لشريط البحث */
+  color: #374151;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05); /* ظل خفيف جدًا */
+}
+
+.searchInput::placeholder {
+  color: #9ca3af;
+}
+
+.searchInput:focus {
+  border-color: #a23034;
+}
+
+.addMenuItemButton {
+  background-color: #a23034;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: .25s;
+}
+
+.addMenuItemButton:hover {
+  background-color: #880f0f;
+}
+
+.menuItemsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.noItemsMessage {
+  text-align: center;
+  font-size: 1.2em;
+  color: #6b7280;
+  grid-column: 1 / -1;
+  margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+  .headerSection {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .addMenuItemButton {
+    width: 100%;
+  }
+
+  .contentWrapper {
+    padding: 0 15px;
+  }
+
+  .menuItemsGrid {
+    grid-template-columns: 1fr;
+  }
+}

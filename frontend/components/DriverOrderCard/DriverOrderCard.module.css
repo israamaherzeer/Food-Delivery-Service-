@@ -1,0 +1,354 @@
+/* Inherited from existing patterns, Poppins font */
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+.orderCard {
+  background-color: #ffffff; 
+  border-radius: 12px;
+  padding: 20px;
+  color: #333; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); 
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border: 1px solid #e5e7eb; 
+ 
+min-height: 400px; 
+ 
+
+}
+.header {
+ display:flex;
+ flex-direction:column;
+ gap:8px;
+}
+
+.customerName {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #374151;
+  margin-bottom: 3px;
+}
+.restName{
+  margin: 0px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #374151;
+
+}
+
+.first,.second{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+   color: #6b7280;
+   
+
+}
+.first p , .second p {
+  margin: 0;
+}
+.details{
+  display: flex;
+flex-direction: column; 
+gap:10px
+
+}
+.totalPrice {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #a23034; /* Red color for prices */
+}
+
+.details p,
+.paymentInfo p,
+.restaurantInfo p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9em;
+  color: #6b7280;
+}
+
+.details svg,
+.paymentInfo svg,
+.restaurantInfo svg {
+  width: 16px;
+  height: 16px;
+  stroke: #a23034; /* Red color for icons */
+}
+
+.paymentInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid #e5e7eb; /* Separator */
+}
+
+.paymentMethod {
+  font-weight: bold;
+  color: #374151;
+}
+
+.items {
+  padding-top: 10px;
+  border-top: 1px solid #e5e7eb; /* Separator */
+   flex-grow: 1;
+  overflow-y: auto;
+  max-height: 160px; 
+}
+
+.itemsTitle {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #374151;
+    margin: 0;
+    margin-bottom: 7px;
+
+}
+
+.items ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.itemRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9em;
+  margin-bottom: 4px; /* Reduced margin */
+  color: #4b5563;
+}
+
+.restaurantInfo {
+  padding: 6px 0 ;
+  border-top: 1px solid #e5e7eb; /* Separator */
+  margin-bottom: 10px;
+    display: flex;
+flex-direction: column; 
+gap:8px
+  
+  
+}
+
+
+.earnings {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid #e5e7eb; /* Separator */
+  font-size: 1em;
+  font-weight: bold;
+  color: #374151;
+}
+
+.earningsAmount {
+  color: #22c55e; /* Green for earnings */
+}
+
+.actions {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+  margin-top: 15px;
+}
+
+.button {
+  flex: 1; /* Buttons take equal width */
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button specific styles from images */
+.confirmButton {
+  background-color: #f97316; /* Orange */
+  color: white;
+  width: 100%;
+}
+.confirmButton:hover {
+  background-color: #e66200;
+}
+
+.rejectButton {
+  background-color: #ef4444; /* Red */
+  color: white;
+}
+.rejectButton:hover {
+  background-color: #dc2626;
+}
+
+.pickedUpButton { /* This button is green in the image */
+  background-color: #22c55e; /* Green */
+  color: white;
+  
+}
+.pickedUpButton:hover {
+  background-color: #1a9e4b;
+  border: 1px solid black;
+}
+
+.deliveredButton { 
+  background-color: #22c55e; 
+  color: white;
+}
+.deliveredButton:hover {
+  background-color: #1a9e4b;
+}
+
+.viewDetailsButton,
+.rejectedStatusButton { 
+  color: #6b7280;
+  cursor: not-allowed;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.3s ease;
+}
+/* Responsive */
+@media (max-width: 768px) {
+
+  .orderCard {
+    width: 100%;
+    padding: 14px;
+    gap: 12px;
+    min-height: auto;
+    border-radius: 10px;
+  }
+
+  .header {
+    gap: 8px;
+  }
+
+  .first,
+  .second {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .customerName,
+  .restName {
+    font-size: 1rem;
+  }
+
+  .totalPrice {
+    font-size: 1rem;
+  }
+
+
+  .details p,
+  .restaurantInfo p,
+  .paymentInfo p {
+    font-size: 0.85rem;
+    word-break: break-word;
+  }
+
+
+  .items {
+    max-height: 140px;
+    overflow-y: auto;
+  }
+
+
+  .itemRow {
+    font-size: 0.85rem;
+    gap: 10px;
+  }
+
+
+  .paymentInfo {
+    padding-top: 8px;
+  }
+
+
+  .restaurantInfo {
+    gap: 5px;
+  }
+
+
+  .earnings {
+    font-size: 0.9rem;
+  }
+
+
+  .actions {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+
+  .button,
+  .confirmButton,
+  .deliveredButton {
+    width: 100%;
+    padding: 11px;
+    font-size: 0.9rem;
+  }
+
+
+  .viewDetailsButton {
+    width:100%;
+    margin-top:10px;
+  }
+}
+
+
+
+@media (max-width: 400px) {
+
+  .orderCard {
+    padding: 12px;
+  }
+
+
+  .first,
+  .second {
+    flex-direction: column;
+    align-items: flex-start;
+    gap:5px;
+  }
+
+
+  .customerName {
+    font-size: .95rem;
+  }
+
+
+  .totalPrice {
+    font-size:.95rem;
+  }
+
+
+  .itemRow {
+    flex-direction: column;
+    gap:3px;
+  }
+
+
+  .earnings {
+    flex-direction: column;
+    align-items:flex-start;
+    gap:5px;
+  }
+
+}

@@ -1,0 +1,118 @@
+
+ .background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.card {
+  background: white;
+  width: 400px;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.title {
+  font-size: 20px;
+  margin: 0;
+  font-weight: 150;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #9c2327;
+  cursor: pointer;
+}
+
+.section {
+  margin-top: 20px;
+
+}
+
+.sectionLabel {
+  font-weight: 500;
+  margin-bottom: 5px;
+  display: flex;
+  color: #333;
+   font-family: Arial, Helvetica, sans-serif;
+     padding: 8px 10px;
+      margin-left: 20px;
+
+ 
+}
+
+.input {
+  width: 85%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-left: 20px;
+ 
+  
+
+}
+.select {
+  width: 90%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-left: 20px;
+ 
+  
+
+}
+
+
+
+
+.addbutton {
+  width: 90%;
+  padding: 12px;
+  background-color: #9c2327;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+margin-left: 20px;
+}
+
+.addbutton:hover {
+  background-color: #801c21;
+}
+.textarea {
+  width: 85%;
+  height: 100px; 
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-left: 20px;
+  resize: none; 
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+

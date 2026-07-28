@@ -1,0 +1,72 @@
+.noti {
+    font-size: medium;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    line-height: 1.4;
+    margin-bottom: 50px;
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.container {
+    position: relative;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    z-index: 1001;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.buttonGroup {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+.container button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.delete {
+    background-color: #9c2327;
+}
+
+.cancle {
+    background-color: #a0a0a0;
+}
+
+.cancle:hover {
+    background: #707070;
+}
+
+.delete:hover {
+    background: #6f0205;
+}

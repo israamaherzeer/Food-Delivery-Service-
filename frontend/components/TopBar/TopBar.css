@@ -1,0 +1,281 @@
+html {
+  font-size: 80%;
+}
+
+.topbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 8px 0; /* ارتفاع أقل */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+
+.topbar-container {
+
+  width: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 30px; /* قرب الأطراف */
+
+}
+
+
+
+/* LOGO */
+
+.logo{
+
+  width: 55px;
+  height: auto;
+
+  cursor: pointer;
+
+  display:block;
+
+}
+
+
+
+/* SEARCH */
+
+.search-container {
+
+  flex:1;
+
+  display:flex;
+
+  justify-content:center;
+
+  margin:0 80px;
+
+}
+
+
+
+.search-box {
+
+  position:relative;
+
+  width:100%;
+
+  max-width:450px;
+
+  display:flex;
+
+  align-items:center;
+
+}
+
+
+
+.search-icon {
+
+  position:absolute;
+
+  left:12px;
+
+  color:#9ca3af;
+
+}
+
+
+
+.search-input {
+
+  width:100%;
+
+  padding:9px 15px 9px 38px;
+
+  border:1px solid #d1d5db;
+
+  border-radius:20px;
+
+  font-size:13px;
+
+  outline:none;
+
+  transition:.3s;
+
+}
+
+
+
+.search-input:focus{
+
+  border-color:#a23034;
+
+  box-shadow:0 0 8px rgba(162,48,52,.2);
+
+}
+
+
+
+.search-input::placeholder{
+
+  color:#9ca3af;
+
+}
+
+
+
+/* ACTIONS */
+
+.topbar-actions {
+
+
+  display:flex;
+
+  align-items:center;
+
+  gap:15px;
+
+}
+
+
+
+.cart-icon,
+.user-icon,
+.menu-icon,
+.search-icon2{
+
+  cursor:pointer;
+
+  padding:5px;
+
+  color:#374151;
+
+  transition:.3s;
+
+}
+
+
+.cart-icon{
+
+  position:relative;
+
+}
+
+.cart-icon:hover,
+.user-icon:hover,
+.menu-icon:hover,
+.search-icon2:hover{
+
+  color:#a23034;
+
+}
+
+
+
+/* CART NUMBER */
+
+
+.cart-badge{
+
+  position:absolute;
+
+  top:-4px;
+
+  right:-4px;
+
+  background:#a23034;
+
+  color:white;
+
+  font-size:10px;
+
+  width:16px;
+
+  height:16px;
+
+  border-radius:50%;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  font-weight:bold;
+
+  line-height:1;
+
+}
+
+
+
+/* mobile search icon */
+
+.search-icon2{
+
+display:none;
+
+}
+
+
+
+
+/* MOBILE */
+
+
+@media(max-width:768px){
+
+
+.topbar-container{
+
+padding:0 15px;
+
+}
+
+
+
+.search-container{
+
+margin:0 20px;
+
+}
+
+
+
+}
+
+
+
+@media(max-width:480px){
+
+
+.search-container{
+
+display:none;
+
+}
+
+
+
+.search-icon2{
+
+display:block;
+
+}
+
+
+.logo{
+
+width:45px;
+
+}
+
+
+.topbar-actions{
+
+gap:8px;
+
+}
+
+
+}

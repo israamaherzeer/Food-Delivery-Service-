@@ -1,0 +1,366 @@
+.restaurantPage {
+  min-height: 100vh;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 30px;
+
+  overflow: hidden;
+ 
+}
+
+
+/* Background image */
+.restaurantImage {
+
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  top: 0;
+  left: 0;
+
+  opacity: 0.65;
+}
+
+
+/* Main card */
+.restaurantContainer {
+
+  position: relative;
+  z-index: 2;
+
+  width: 90%;
+  max-width: 550px;
+
+  background: white;
+
+  border-radius: 25px;
+
+  padding: 0px 30px;
+
+  box-shadow:
+  0 15px 40px rgba(0,0,0,0.15);
+
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+ 
+
+
+}
+
+
+/* Title */
+.restaurantTitle {
+
+  text-align: center;
+
+  font-size: 32px;
+
+  font-weight: 700;
+
+  color: #8d0207;
+
+
+ margin: 25px;
+
+}
+
+
+
+/* Form */
+.restaurantForm {
+
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+
+}
+
+
+
+/* Each field */
+.formElement {
+
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+
+}
+
+
+
+/* Labels */
+.label {
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  color: #333;
+
+}
+
+
+
+/* Inputs */
+.input {
+
+  width: 100%;
+
+  height: 45px;
+
+  box-sizing: border-box;
+
+  padding: 0 15px;
+
+
+  background: #f4f4f4;
+
+  border: none;
+
+  border-radius: 14px;
+
+
+  outline: none;
+
+  font-size: 15px;
+
+  transition: .3s;
+
+}
+
+
+
+.input:focus {
+
+  background: white;
+
+  border: 1px solid #8d0207;
+
+}
+
+
+
+/* Image upload */
+.fileInput {
+
+  width: 100%;
+
+  padding: 12px;
+
+  background: #f4f4f4;
+
+  border-radius: 14px;
+
+}
+
+
+
+/* Opening and closing time */
+.timeRow {
+
+  width:100%;
+
+  display:flex;
+
+  gap:15px;
+
+}
+
+
+
+.timeRow .formElement {
+
+  flex:1;
+
+}
+
+
+
+/* Categories */
+.categorySelect {
+
+  width:100%;
+
+  height:120px;
+
+  padding:10px;
+
+
+  background:#f4f4f4;
+
+  border:none;
+
+  border-radius:14px;
+
+  outline:none;
+
+}
+
+
+
+/* Button */
+.button {
+
+  width:100%;
+
+  height:45px;
+
+
+  margin-top:10px;
+
+
+  border:none;
+
+  border-radius:15px;
+
+
+  background:#8d0207;
+
+  color:white;
+
+
+  font-size:17px;
+
+  font-weight:600;
+
+
+  cursor:pointer;
+
+
+  transition:.3s;
+
+}
+
+
+
+.button:hover {
+
+  background:#b00008;
+
+  transform:translateY(-2px);
+
+}
+
+
+
+/* Bottom text */
+.footer {
+
+  text-align:center;
+
+  margin-top:20px;
+
+}
+
+
+
+.link {
+
+  color:#669EFF;
+
+  text-decoration:none;
+
+  font-weight:500;
+
+}
+
+
+
+/* Scroll bar */
+.restaurantContainer::-webkit-scrollbar {
+
+  width:6px;
+
+}
+
+
+.restaurantContainer::-webkit-scrollbar-thumb {
+
+  background:#8d0207;
+
+  border-radius:10px;
+
+}
+
+.imageUpload{
+    width:100%;
+    background:#f3f4f6;
+    border-radius:16px;
+    padding:15px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:15px;
+}
+
+
+.imageUpload input{
+    width:100%;
+}
+
+
+.previewImage{
+
+    width:150px;
+    height:150px;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+
+}
+
+
+/* Mobile */
+@media(max-width:600px){
+
+
+.restaurantContainer{
+
+ width:90%;
+
+ padding:25px;
+
+}
+
+
+
+.restaurantTitle{
+
+ font-size:26px;
+
+}
+
+
+
+.timeRow{
+
+ flex-direction:column;
+
+ gap:18px;
+
+}
+
+
+}

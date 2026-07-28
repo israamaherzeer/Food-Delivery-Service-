@@ -1,0 +1,69 @@
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 70px); /* حتى يكون تحت الـ TopBar */
+}
+
+.loadingImage {
+  width: 280px;
+  max-width: 80%;
+  height: auto;
+}
+.editprofile {
+  width: min(90%, 1200px);
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0 25px;
+}
+
+.buttons {
+  display:flex;
+  gap:10px;
+}
+
+.editBtn,
+.saveButton {
+  background:#8d0207;
+  color:white;
+  padding:4px 16px;
+  border:none;
+  border-radius:6px;
+  font-weight:600;
+  cursor:pointer;
+  width:200px;
+  height:40px;
+}
+
+.empty {
+  text-align:center;
+  color:#6b7280;
+  margin:100px auto;
+  padding:20px;
+}
+
+
+@media(max-width:768px){
+
+.editprofile{
+ width:95%;
+ flex-direction:column;
+ align-items:stretch;
+}
+
+.buttons{
+ width:100%;
+ flex-direction:column;
+}
+
+.editBtn,
+.saveButton{
+ width:100%;
+}
+
+}

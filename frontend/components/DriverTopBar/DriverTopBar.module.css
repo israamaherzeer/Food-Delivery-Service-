@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+.topbar {
+  background-color: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.topbarContainer {
+  width: min(95%, 1400px);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+/* Left */
+
+.logContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  min-width: 0;
+}
+
+.logo {
+  width: 60px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.dashboardText {
+  font-size: 15px;
+  color: #6b7280;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Right */
+
+.topbarActions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-shrink: 0;
+}
+
+/* Icons */
+
+.storeIcon,
+.settingsIcon,
+.userIcon,
+.logoutIcon {
+  color: #6b7280;
+  font-size: 22px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.userIcon svg,
+.logoutIcon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.activeLink {
+  color: #991b1b !important;
+}
+
+.storeIcon:hover,
+.settingsIcon:hover,
+.userIcon:hover,
+.logoutIcon:hover {
+  color: #991b1b;
+}
+
+/* Dropdown */
+
+.settingsDropdown {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  min-width: 200px;
+  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdownItem {
+  padding: 12px 18px;
+  color: #1f2937;
+  text-decoration: none;
+}
+
+.dropdownItem:hover {
+  background: #f9fafb;
+}
+
+/* =======================
+   Tablet
+======================= */
+
+@media (max-width: 992px) {
+
+  .topbarContainer {
+    padding: 10px 16px;
+  }
+
+  .logo {
+    width: 52px;
+  }
+
+  .dashboardText {
+    font-size: 14px;
+  }
+
+  .topbarActions {
+    gap: 14px;
+  }
+
+}
+
+/* =======================
+   Mobile
+======================= */
+
+@media (max-width: 768px) {
+
+  .topbarContainer {
+    padding: 10px 12px;
+  }
+
+  .logo {
+    width: 46px;
+  }
+
+  .dashboardText {
+    font-size: 13px;
+  }
+
+  .topbarActions {
+    gap: 12px;
+  }
+
+  .storeIcon,
+  .settingsIcon,
+  .userIcon,
+  .logoutIcon {
+    font-size: 20px;
+  }
+
+}
+
+/* =======================
+   Small Mobile
+======================= */
+
+@media (max-width: 480px) {
+
+  .dashboardText {
+    display: none;
+  }
+
+  .logo {
+    width: 42px;
+  }
+
+  .topbarContainer {
+    padding: 8px 10px;
+  }
+
+  .topbarActions {
+    gap: 10px;
+  }
+
+  .storeIcon,
+  .settingsIcon,
+  .userIcon,
+  .logoutIcon {
+    font-size: 18px;
+  }
+
+  .userIcon svg,
+  .logoutIcon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .settingsDropdown {
+    min-width: 160px;
+  }
+
+}

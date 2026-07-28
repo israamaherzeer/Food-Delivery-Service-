@@ -1,0 +1,275 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo&display=swap");
+
+.container {
+  background: #f3f4f6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+   min-height: 150vh; 
+   height: auto; 
+  width: 100%;
+}
+
+.card,
+.OrderCard {
+  margin-top: 70px;
+  background: #fff;
+  width: 50%;
+  border-radius: 16px;
+  border: 1px solid #bdc1ca;
+  box-shadow: 0 0 1px rgba(23, 26, 31, 0.07), 0 0 2px rgba(23, 26, 31, 0.12);
+  margin-bottom: 20px;
+  padding: 20px;
+   font-family:  Arial, sans-serif;
+}
+
+.headerText {
+  flex: 1;
+  margin-left: 16px;
+}
+.cardHeader,
+.orderHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile {
+  width: 64px;
+  height: 64px;
+  background: #f9731626;
+  border-radius: 16px;
+  border: 1px solid #f973161a;
+  box-shadow: 0 0 1px rgba(23, 26, 31, 0.07), 0 0 2px rgba(23, 26, 31, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileIcon {
+  color: #8d0207;
+}
+
+.title {
+  font-family: Archivo;
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+  margin-bottom: 4px;
+}
+
+.headerText span {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.editBtn,
+.saveButton {
+  background: #8d0207;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.editBtn:hover,
+.saveButton:hover {
+  background: #6f0205;
+}
+.saveButton {
+  display: block;
+  margin-left: auto;
+  width: fit-content;
+}
+
+.cardInfo1 {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.ProfileData,
+.DeliveryAddress {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.ProfileData input,
+.cardInfo2 input {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #4b5563;
+}
+
+.cardInfo2 {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+}
+
+.ProfileDataflex {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.radioGroup {
+    display: flex;
+  
+  }
+  
+  .radioLabel {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .stars {
+    margin-top: 8px;
+    font-size: 18px;
+    color: #FFD700;
+  }
+  
+
+  .label {
+    font-weight: 500;
+    margin-top: 10px;
+    color: #555;
+  }
+  /* Responsive */
+
+  @media (max-width:768px){
+  .cardHeader{
+    width:100%;
+  }
+}
+@media (max-width: 768px) {
+
+  .container {
+    min-height: 100vh;
+    padding: 20px 10px;
+  }
+
+
+  .card {
+    width: 95%;
+    margin-top: 30px;
+    padding: 15px;
+    border-radius: 12px;
+  }
+
+
+  .cardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+
+  .headerText {
+    margin-left: 0;
+  }
+
+
+  .headerText span {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+
+  .profile {
+    width: 55px;
+    height: 55px;
+  }
+
+
+  .editBtn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+
+  .cardInfo1 {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+
+  .ProfileData {
+    width: 100%;
+  }
+
+
+  .ProfileData input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+
+  .saveButton {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+  }
+
+}
+
+
+
+/* Small phones */
+
+@media (max-width: 480px) {
+
+
+  .card {
+    width: 100%;
+    padding: 12px;
+  }
+
+
+  .title {
+    font-size: 16px;
+  }
+
+
+  .headerText span {
+    font-size: 12px;
+  }
+
+
+  .label {
+    font-size: 13px;
+  }
+
+
+  .ProfileData input {
+    font-size: 14px;
+    padding: 9px;
+  }
+
+
+  .editBtn,
+  .saveButton {
+    font-size: 14px;
+  }
+
+}
+  

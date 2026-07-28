@@ -1,0 +1,134 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.card {
+  background: white;
+  width: 400px;
+  max-width: 90%;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.title {
+  font-size: 20px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #9c2327;
+  cursor: pointer;
+}
+
+.section {
+  margin-top: 20px;
+}
+
+.sectionLabel {
+  font-weight: 500;
+  margin-bottom: 5px;
+  display: block;
+  color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 8px 0;
+}
+
+
+/* كل الحقول نفس الحجم والمحاذاة */
+.input,
+.select,
+.textarea {
+  width: calc(100% - 40px);
+  margin-left: 20px;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Select */
+.select {
+  background-color: white;
+  cursor: pointer;
+}
+
+
+/* Textarea */
+.textarea {
+  height: 100px;
+  resize: none;
+}
+
+
+/* Button */
+.buttons {
+  width: 100%;
+}
+
+.addbutton {
+  width: calc(100% - 40px);
+  margin-left: 20px;
+  padding: 12px;
+  background-color: #9c2327;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.addbutton:hover {
+  background-color: #801c21;
+}
+
+
+/* Mobile */
+@media (max-width: 480px) {
+
+  .card {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .input,
+  .select,
+  .textarea,
+  .addbutton {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+}

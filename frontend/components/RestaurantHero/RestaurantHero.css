@@ -1,0 +1,443 @@
+.restaurant-hero {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+
+.hero-banner {
+  margin: 0 auto;
+  width: 100%;
+  height: 350px;
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
+    background-image: url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1350&q=80");
+
+  background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+
+}
+
+.hero-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(83, 82, 82, 0.685);
+  /* background: rgba(249, 115, 22, 0.2); */
+
+  border-radius: 16px;
+  z-index: 0;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(233, 233, 233, 0.4) ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-title {
+  color: white;
+  font-size: 48px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  direction: rtl;
+  text-align: center;
+  margin: 0;
+}
+
+.restaurant-info-card {
+  background-color: transparent;
+  border-radius: 16px;
+  margin: -220px auto 0 auto;
+  max-width: 1170px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.restaurant-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: -30px;
+}
+
+.logo-image {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 4px solid white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  /* z-index: 100000;  */
+  margin-top:0px; 
+}
+
+.restaurant-details {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  padding-top:40px;
+  padding-bottom: 10px;
+  display: grid;
+  gap: 32px;
+  align-items: start;
+  grid-template-columns: repeat(4,1fr);
+}
+
+.detail-section {
+  text-align: center;
+}
+
+.section-title {
+  font-size: 17.6px;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 12px 0;
+}
+
+.category-tags {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.category-tag {
+  background-color: #fce7e7;
+  color: rgba(156, 35, 39, 255);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.location-text,
+.hours-text,
+.delivery-price,.phone-text
+ {
+  color: #6b7280;
+  font-size: 15.2px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.status-open {
+  color: #059669;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 4px 0 0 0;
+}
+.status-closed {
+  color: #961b05;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 4px 0 0 0;
+}
+
+.delivery-price {
+  color: #374151;
+  font-weight: 600;
+  font-size: 17.6px;
+}
+.restaurant-input {
+  width: 90%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #374151;
+  background-color: white;
+  transition: border 0.3s ease;
+  box-sizing: border-box;
+  margin-bottom:10px ;
+}
+
+
+
+/* =========================================================
+                        RESPONSIVE
+========================================================= */
+
+/* ---------- Laptop ---------- */
+
+@media (max-width:992px){
+
+.hero-banner{
+height:300px;
+}
+
+.restaurant-info-card{
+margin:-150px 20px 0;
+padding:15px;
+}
+
+.restaurant-details{
+
+grid-template-columns:repeat(2,1fr);
+
+gap:25px;
+
+padding:45px 20px 25px;
+
+}
+
+.logo-image{
+
+width:95px;
+height:95px;
+
+}
+
+.section-title{
+
+font-size:16px;
+
+}
+
+.location-text,
+.hours-text,
+.delivery-price,
+.phone-text{
+
+font-size:15px;
+
+}
+
+}
+
+
+/* ---------- Tablet ---------- */
+
+@media (max-width:768px){
+
+.hero-banner{
+
+height:250px;
+
+}
+
+.restaurant-info-card{
+
+margin:-120px 15px 0;
+
+padding:10px;
+
+}
+
+.logo-image{
+
+width:85px;
+
+height:85px;
+
+}
+
+.restaurant-details{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:20px;
+
+padding:45px 20px 20px;
+
+}
+
+.section-title{
+
+font-size:15px;
+
+}
+
+.location-text,
+.hours-text,
+.delivery-price,
+.phone-text{
+
+font-size:14px;
+
+}
+
+.restaurant-input{
+
+width:100%;
+
+}
+
+}
+
+
+/* ---------- Mobile ---------- */
+
+@media (max-width:576px){
+
+.hero-banner{
+
+height:200px;
+
+}
+
+.restaurant-info-card{
+
+margin:-90px 10px 0;
+
+padding:0;
+
+}
+
+.restaurant-logo{
+
+margin-bottom:-35px;
+
+}
+
+.logo-image{
+
+width:75px;
+
+height:75px;
+
+border:3px solid white;
+
+}
+
+.restaurant-details{
+
+display:grid;
+
+grid-template-columns:1fr;
+
+gap:18px;
+
+padding:45px 18px 20px;
+
+}
+
+.detail-section{
+
+padding-bottom:15px;
+
+border-bottom:1px solid #ececec;
+
+}
+
+.detail-section:last-child{
+
+border-bottom:none;
+
+}
+
+.section-title{
+
+font-size:15px;
+
+margin-bottom:8px;
+
+}
+
+.location-text,
+.hours-text,
+.delivery-price,
+.phone-text{
+
+font-size:14px;
+
+line-height:1.6;
+
+}
+
+.restaurant-input{
+
+width:100%;
+
+padding:10px 12px;
+
+font-size:14px;
+
+}
+
+.status-open,
+.status-closed{
+
+font-size:13px;
+
+margin-top:6px;
+
+}
+
+}
+
+
+/* ---------- Small Phones ---------- */
+
+@media (max-width:400px){
+
+.hero-banner{
+
+height:170px;
+
+}
+
+.restaurant-info-card{
+
+margin:-80px 8px 0;
+
+}
+
+.logo-image{
+
+width:65px;
+
+height:65px;
+
+}
+
+.restaurant-details{
+
+padding:40px 15px 15px;
+
+gap:15px;
+
+}
+
+.section-title{
+
+font-size:14px;
+
+}
+
+.location-text,
+.hours-text,
+.delivery-price,
+.phone-text{
+
+font-size:13px;
+
+}
+
+.restaurant-input{
+
+font-size:13px;
+
+padding:8px 10px;
+
+}
+
+.status-open,
+.status-closed{
+
+font-size:12px;
+
+}
+
+}
