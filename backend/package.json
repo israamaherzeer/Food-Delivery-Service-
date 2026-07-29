@@ -4,7 +4,8 @@
   "main": "./dist/app.js",
   "type": "module",
   "scripts": {
-    "start": "node ./bin/www",
+     "build": "tsc",
+    "start": "node ./dist/app.js",
     "build-tsc": "tsc -w",
     "run-watch": "nodemon ./dist/app.js",
     "dev": "concurrently \"npm:build-tsc\"  \"npm:run-watch\""

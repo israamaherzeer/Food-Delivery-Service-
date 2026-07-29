@@ -23,7 +23,7 @@ const orderSchema = new mongoose.Schema(
     payment_method: {
       type: String,
       enum: ["Cash", "CreditCard"],
-      set: (v) => v.charAt(0).toUpperCase() + v.slice(1).toLowerCase(),
+     set: (v: string) => v.charAt(0).toUpperCase() + v.slice(1).toLowerCase(),
       required: true,
     },
     createdAt: {

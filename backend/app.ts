@@ -20,7 +20,7 @@ import { authenticate } from "./src/middleware/auth/authenticate.js";
 import cartRoutes from './src/routers/cartRouter.js';
 const app = express();
 
-const PORT = 5000;
+const PORT = Number(process.env.PORT) || 5000;
 
 app.use(cors({
   origin: 'http://localhost:5173',

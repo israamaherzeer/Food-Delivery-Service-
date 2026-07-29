@@ -32,11 +32,19 @@ router.post("/address", authenticate, async (req, res, next) => {
     const { address, label } = req.body;
 
     if (!address || typeof address !== "string" || address.trim() === "") {
-      return res.status(400).json({ status: "fail", message: "Address is required" });
+     res.status(400).json({
+  status: "fail",
+  message: "Address is required",
+});
+return;
     }
 
     if (!label || typeof label !== "string" || label.trim() === "") {
-      return res.status(400).json({ status: "fail", message: "Label is required" });
+    res.status(400).json({
+  status: "fail",
+  message: "Label is required",
+});
+return;
     }
 
     const addresses = await addAddress(userId, address, label);

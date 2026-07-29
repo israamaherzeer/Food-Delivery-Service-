@@ -14,12 +14,14 @@ router.put("/:id/rating", async (req, res) => {
     const { type, rating } = req.body;
 
     if (!["restaurant", "driver"].includes(type)) {
-      return res.status(400).json({ message: "Invalid type" });
+       res.status(400).json({ message: "Invalid type" });
+       return
     }
 
     if (rating < 1 || rating > 5) {
-      return res.status(400).json({ message: "Rating must be between 1 and 5" });
-    }
+       res.status(400).json({ message: "Rating must be between 1 and 5" });
+   return
+      }
 
     const updateField =
       type === "restaurant"
@@ -33,7 +35,8 @@ router.put("/:id/rating", async (req, res) => {
     ).populate("restaurant");
 
     if (!order) {
-      return res.status(404).json({ message: "Order not found" });
+       res.status(404).json({ message: "Order not found" });
+       return
     }
 
     if (type === "restaurant" && order.restaurant) {
@@ -59,9 +62,15 @@ router.put("/:id/rating", async (req, res) => {
 
     res.json({ message: "Rating updated successfully", order });
   } catch (err) {
-    res.status(500).json({ message: "Server error", error: err.message });
+    const message = err instanceof Error ? err.message : "Unknown error";
+
+    res.status(500).json({
+      message: "Server error",
+      error: message,
+    });
   }
 });
+
 
 // router.put("/:id/rating", async (req, res) => {
 //   try {
@@ -134,26 +143,25 @@ router.get(
     }
   }
 );
-router.get("/restaurant-orders", authenticate, async (req: Request, res: Response, next: NextFunction) => {
+router.get("/restaurant-orders", authenticate, async (req, res, next) => {
   try {
+
     const restaurantUserId = res.locals.user._id;
-    const { status } = req.query;
+
+    console.log("Restaurant user id:", restaurantUserId);
+
     let orders = await getOrdersByRestaurantUserId(restaurantUserId);
 
-    if (typeof status === "string" && status.length > 0) {
-      orders = orders.filter(
-        (order: any) =>
-          order.status.toLowerCase() === status.toLowerCase()
-      );
-    }
-
     res.status(200).json({
-      status: "success",
-      message: "Orders retrieved successfully",
-      data: orders,
+      status:"success",
+      data:orders
     });
-  } catch (error) {
-    next(error);
+
+  } catch(error){
+      console.log("GET RESTAURANT ORDERS ERROR:", error);
+    res.status(500).json({
+        message: error
+    });
   }
 });
 router.put("/:id/preparation",authenticate,async (req: Request, res: Response, next: NextFunction) => {

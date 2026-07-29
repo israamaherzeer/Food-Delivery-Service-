@@ -45,31 +45,35 @@ router.put(
       });
 
       if (!driver) {
-        return res.status(404).json({
-          message: "Driver not found"
-        });
+       res.status(404).json({
+  message: "Driver not found",
+});
+return;
       }
 
       // إذا السائق لديه طلب جارٍ
       if (!driver.availability) {
-        return res.status(400).json({
+         res.status(400).json({
           message: "Driver already has an active order"
         });
+        return
       }
 
       const order = await Order.findById(req.params.id);
 
       if (!order) {
-        return res.status(404).json({
+         res.status(404).json({
           message: "Order not found"
         });
+        return
       }
 
       // إذا تم قبول الطلب من سائق آخر
       if (order.driver) {
-        return res.status(400).json({
+         res.status(400).json({
           message: "This order has already been accepted"
         });
+        return
       }
 
       order.driver = driver._id;

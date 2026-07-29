@@ -105,7 +105,12 @@ const getOrderById = async (orderId: string) => {
 };
 
  const getOrdersByRestaurantUserId = async (userId: string) => {
-  const restaurant = await Restaurant.findOne({ user: userId });
+  console.log("USER ID:", userId);
+
+const restaurant = await Restaurant.findOne({ user: userId });
+
+console.log("RESTAURANT:", restaurant);
+
   if (!restaurant) throw new Error("Restaurant not found");
 
   return await Order.find({ restaurant: restaurant._id })

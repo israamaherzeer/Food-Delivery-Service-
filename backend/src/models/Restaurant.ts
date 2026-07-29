@@ -56,7 +56,7 @@ const restaurantSchema = new mongoose.Schema({
     min: 0,
     max: 5,
     default: 0,
-    set: v => Math.round(v * 100) / 100 
+    set: (v: number) => Math.round(v * 100) / 100
   },
   ratingCount: {
     type: Number,
