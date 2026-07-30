@@ -24,7 +24,7 @@ const RestaurantProfile: React.FC = () => {
   useEffect(() => {
     const fetchRestaurant = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/restaurants/id/${id}`,
+        const res = await axios.get(`https://food-delivery-service-production.up.railway.app/restaurants/id/${id}`,
           {
             withCredentials: true,
           }
@@ -62,7 +62,10 @@ const RestaurantProfile: React.FC = () => {
         />
       </div> : (
         <>
-          <TopBar searchTerm={undefined} setSearchTerm={undefined} />
+       <TopBar 
+ searchTerm=""
+ setSearchTerm={() => {}}
+/>
           <RestaurantHero
             restaurant={restaurant}
             isEditing={false}

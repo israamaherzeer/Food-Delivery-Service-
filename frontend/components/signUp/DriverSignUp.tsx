@@ -29,12 +29,12 @@ const navigate = useNavigate();
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/users/signup/driver",
+        "https://food-delivery-service-production.up.railway.app/users/signup/driver",
         formData
       );
 
       const loginResponse = await axios.post(
-      "http://localhost:5000/users/login",
+      "https://food-delivery-service-production.up.railway.app/users/login",
       {
         email: formData.email,
         password: formData.password

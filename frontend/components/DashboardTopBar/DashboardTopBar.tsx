@@ -20,7 +20,7 @@ const DashboardTopBar: React.FC<DashboardTopBarProps> = ({ userRole }) => {
   // };
   const handleLogout = async () => {
     await axios.post(
-      "http://localhost:5000/users/logout",
+      "https://food-delivery-service-production.up.railway.app/users/logout",
 
       {
         withCredentials: true,

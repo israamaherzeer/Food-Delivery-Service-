@@ -60,7 +60,7 @@ const CustomerProfile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/users/profile", {
+        const res = await axios.get("https://food-delivery-service-production.up.railway.app/users/profile", {
           withCredentials: true,
         });
         const data = res.data;
@@ -68,7 +68,7 @@ const CustomerProfile = () => {
         setFullName(data.user.full_name || "");
         setPhoneNumber(data.user.phone_number || "");
 
-        const addressRes = await axios.get("http://localhost:5000/customer-profile/address", {
+        const addressRes = await axios.get("https://food-delivery-service-production.up.railway.app/customer-profile/address", {
           withCredentials: true,
         });
         setAddresses(addressRes.data.data || []);
@@ -85,7 +85,7 @@ const CustomerProfile = () => {
 
     const fetchOrders = async () => {
   try {
-    const res = await axios.get("http://localhost:5000/api/orders", { withCredentials: true });
+    const res = await axios.get("https://food-delivery-service-production.up.railway.app/api/orders", { withCredentials: true });
 
     const formattedOrders: Order[] = (res.data.data || []).map((order: any) => ({
       orderId: order._id || "UNKNOWN_ID",
@@ -152,7 +152,7 @@ const CustomerProfile = () => {
 
     if (addrToDelete._id) {
       try {
-        await axios.delete(`http://localhost:5000/customer-profile/address/${addrToDelete._id}`, {
+        await axios.delete(`https://food-delivery-service-production.up.railway.app/customer-profile/address/${addrToDelete._id}`, {
           withCredentials: true,
         });
       } catch (err) {
@@ -171,7 +171,7 @@ const CustomerProfile = () => {
 
     try {
       await axios.put(
-        `http://localhost:5000/customer-profile/users/${user._id}`,
+        `https://food-delivery-service-production.up.railway.app/customer-profile/users/${user._id}`,
         {
           full_name: fullName,
           phone_number: phoneNumber,
@@ -182,7 +182,7 @@ const CustomerProfile = () => {
       for (const addr of addresses) {
         if (!addr._id) {
           await axios.post(
-            "http://localhost:5000/customer-profile/address",
+            "https://food-delivery-service-production.up.railway.app/customer-profile/address",
             {
               label: addr.label,
               address: addr.address,
@@ -191,7 +191,7 @@ const CustomerProfile = () => {
           );
         } else {
           await axios.put(
-            `http://localhost:5000/customer-profile/address/${addr._id}`,
+            `https://food-delivery-service-production.up.railway.app/customer-profile/address/${addr._id}`,
             { address: addr.address },
             { withCredentials: true }
           );
@@ -228,7 +228,7 @@ const CustomerProfile = () => {
         setDriverRating((prev) => ({ ...prev, [orderId]: rating }));
       }
 
-      await axios.put(`http://localhost:5000/api/orders/${orderId}/rating`, {
+      await axios.put(`https://food-delivery-service-production.up.railway.app/api/orders/${orderId}/rating`, {
         type,
         rating,
       }, { withCredentials: true });
@@ -257,7 +257,10 @@ const CustomerProfile = () => {
 
   return (
     <>
-      <TopBar />
+     <TopBar 
+  searchTerm=""
+  setSearchTerm={() => {}}
+/>
       <div className={style.container} >
         <div className={style.card}>
           <div className={style.cardHeader}>
@@ -413,7 +416,7 @@ const CustomerProfile = () => {
                       <strong>₪{order.totalPrice.toFixed(2)}</strong>
                     </p>
                     <p className={style.orderDetails}>
-                      <FontAwesomeIcon icon={faTruck} /> <strong>Driver:</strong> {`${" "+order.driver?.name + " Driver_Phone_Number : "+order.driver?.phone_number}` || "N/A"}
+                      <FontAwesomeIcon icon={faTruck} /> <strong>Driver:</strong> {`${" "+order.driver?.full_name + " Driver_Phone_Number : "+order.driver?.phone_number}` || "N/A"}
                     </p>
                     <p className={style.orderDetails}>
                       <FontAwesomeIcon icon={faCalendarDays} /> <strong>Date:</strong>{" "}

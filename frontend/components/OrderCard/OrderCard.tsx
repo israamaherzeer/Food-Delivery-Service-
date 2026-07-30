@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faUser } from "@fortawesome/free-solid-svg-icons";
 import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import type { Order } from '../../types';
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 
@@ -63,7 +62,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ order,deliveryPrice, restaurantRa
           {order.items.map((item, index) => (
             <li key={index} className={style.itemRow}>
               <span>
-                {item.quantity} x {item.menuItem?.name}
+                {item.quantity} x {item.name}
               </span>
               <span className={style.itemPrice}>
                 ₪ {(item.quantity * item.price).toFixed(2)}

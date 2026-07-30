@@ -17,7 +17,7 @@ const RestaurantHero: React.FC<Iprops> = (props: Iprops) => {
     const fetchStatus = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/restaurants/status/${props.restaurant._id}`,
+          `https://food-delivery-service-production.up.railway.app/restaurants/status/${props.restaurant._id}`,
           { withCredentials: true }
         );
         if (res.data?.data?.isOpen) {
@@ -49,7 +49,7 @@ const RestaurantHero: React.FC<Iprops> = (props: Iprops) => {
       props.restaurant.imageUrl
       ? props.restaurant.imageUrl.startsWith("http")
       ? props.restaurant.imageUrl
-      : `http://localhost:5000/uploads/${props.restaurant.imageUrl}`
+      : `https://food-delivery-service-production.up.railway.app/uploads/${props.restaurant.imageUrl}`
       : "/default-restaurant.png"
     }
         

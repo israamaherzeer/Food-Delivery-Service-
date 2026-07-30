@@ -79,7 +79,7 @@ const navigate = useNavigate();
     try {
 
       await axios.post(
-        "http://localhost:5000/users/signup/restaurant",
+        "https://food-delivery-service-production.up.railway.app/users/signup/restaurant",
         data,
         {
           headers:{
@@ -90,7 +90,7 @@ const navigate = useNavigate();
 
 
      const loginResponse = await axios.post(
-    "http://localhost:5000/users/login",
+    "https://food-delivery-service-production.up.railway.app/users/login",
     {
       email: formData.email,
       password: formData.password
@@ -126,7 +126,7 @@ const navigate = useNavigate();
   useEffect(()=>{
 
     axios.get(
-      "http://localhost:5000/categories"
+      "https://food-delivery-service-production.up.railway.app/categories"
     )
     .then(res=>{
 

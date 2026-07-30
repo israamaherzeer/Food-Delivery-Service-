@@ -24,6 +24,7 @@ const {
   onClose: closeCart,
   cartItems,
   onUpdateQuantity,
+    deliveryPrice,
 } = useCartContext();
 
   return (
@@ -64,6 +65,8 @@ const {
         onClose={closeCart}
         cartItems={Object.values(cartItems)}
         onUpdateQuantity={onUpdateQuantity}
+          deliveryPrice={deliveryPrice}
+      
       />
     </BrowserRouter>
   );

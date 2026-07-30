@@ -11,11 +11,21 @@ import ConfirmOrder from '../ConfirmOrder/ConfirmOrder';
 import Notification from '../Notification/Notification.js';
 
 interface CartProps {
-  isOpen: boolean;
+   isOpen: boolean;
   onClose: () => void;
+  deliveryPrice: number;
+
+  items?: CartItem[];
+
+  cartItems?: CartItem[];
+
+  onUpdateQuantity?: (
+    id: string,
+    quantity: number
+  ) => void;
 }
 
-const API_BASE_URL = 'http://localhost:5000/api/cart';
+const API_BASE_URL = 'https://food-delivery-service-production.up.railway.app/api/cart';
 
 const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
   const [itemToDelete, setItemToDelete] = useState<CartItemWithMenu | null>(null);

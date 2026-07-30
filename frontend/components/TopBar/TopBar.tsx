@@ -4,8 +4,12 @@ import { useCartContext } from "../../src/cartcontext";
 import { useNavigate, useLocation } from "react-router-dom";
 
 
+interface TopBarProps {
+  searchTerm: string;
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+}
 
-const TopBar = ({ searchTerm, setSearchTerm }) => {
+const TopBar = ({ searchTerm, setSearchTerm }: TopBarProps) => {
   const { totalCount, toggleCart } = useCartContext();
   const navigate = useNavigate();
 const location = useLocation();
@@ -16,7 +20,7 @@ const showSearch = location.pathname === "/home";
   };
 
   const handleLogout = async () => {
-    await fetch("http://localhost:5000/users/logout", {
+    await fetch("https://food-delivery-service-production.up.railway.app/users/logout", {
       method: "POST",
       credentials: "include",
     });

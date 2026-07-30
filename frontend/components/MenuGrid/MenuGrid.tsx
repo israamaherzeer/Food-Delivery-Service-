@@ -29,7 +29,7 @@ useEffect(() => {
       setLoading(true);
 
     
-      const menuRes = await axios.get(`http://localhost:5000/menu-items`, {
+      const menuRes = await axios.get(`https://food-delivery-service-production.up.railway.app/menu-items`, {
         withCredentials: true,
       });
       const allItems = menuRes.data.data;
@@ -40,7 +40,7 @@ useEffect(() => {
 
       
       const statusRes = await axios.get(
-        `http://localhost:5000/restaurants/status/${resturentId}`,
+        `https://food-delivery-service-production.up.railway.app/restaurants/status/${resturentId}`,
         { withCredentials: true }
       );
       setIsRestaurantOpen(statusRes.data.data.isOpen);

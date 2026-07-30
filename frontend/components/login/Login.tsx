@@ -3,6 +3,9 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import React from "react";
+
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -11,12 +14,12 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/users/login", 
+        "https://food-delivery-service-production.up.railway.app/users/login", 
         { email, password },
         { withCredentials: true } 
       );
@@ -34,7 +37,7 @@ const Login = () => {
         else console.log("not okkkkkk");
       }
     
-    } catch (err) {
+    } catch (err:any) {
       console.error(err);
       setError(err.response?.data?.message || "Login failed");
     }

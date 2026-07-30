@@ -20,7 +20,7 @@ const RestaurantDashboardPage: React.FC = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/orders/restaurant-orders",
+      const response = await axios.get("https://food-delivery-service-production.up.railway.app/api/orders/restaurant-orders",
         {
           withCredentials: true, 
         }
@@ -57,7 +57,7 @@ const RestaurantDashboardPage: React.FC = () => {
   ) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/orders/${orderId}/preparation`,
+        `https://food-delivery-service-production.up.railway.app/api/orders/${orderId}/preparation`,
         { status: 'In Preparation' },
         { withCredentials: true }
       );
@@ -86,7 +86,7 @@ const RestaurantDashboardPage: React.FC = () => {
   ) => {
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/orders/${orderId}/searchingForDriver`,
+        `https://food-delivery-service-production.up.railway.app/api/orders/${orderId}/searchingForDriver`,
         { status: newStatus },
         { withCredentials: true }
       );

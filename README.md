@@ -183,7 +183,7 @@ npm install
 # Compile TypeScript and run the server with hot-reload
 npm run dev
 ```
-The API server runs on **http://localhost:5000**.
+The API server runs on **https://food-delivery-service-production.up.railway.app**.
 
 Available scripts:
 | Script | Description |

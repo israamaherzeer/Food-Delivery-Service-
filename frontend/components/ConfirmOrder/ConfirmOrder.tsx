@@ -33,7 +33,7 @@ const [showError, setShowError] = useState(false);
   useEffect(() => {
     const fetchAddresses = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/customer-profile/address", {
+        const res = await axios.get("https://food-delivery-service-production.up.railway.app/customer-profile/address", {
           withCredentials: true,
         });
         setAddresses(res.data.data || []);
@@ -76,7 +76,7 @@ const [showError, setShowError] = useState(false);
 
     try {
      await axios.post(
-  "http://localhost:5000/api/orders/",
+  "https://food-delivery-service-production.up.railway.app/api/orders/",
   orderData,
   {
     withCredentials:true,

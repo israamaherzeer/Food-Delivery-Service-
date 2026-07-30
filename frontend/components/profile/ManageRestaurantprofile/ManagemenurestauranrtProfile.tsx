@@ -32,7 +32,7 @@ const ManageRestaurantProfile: React.FC = () => {
 
     const fetchRestaurant = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/users/profile`,
+        const res = await axios.get(`https://food-delivery-service-production.up.railway.app/users/profile`,
           {
             withCredentials: true,
           }
@@ -53,7 +53,7 @@ const ManageRestaurantProfile: React.FC = () => {
 const handleSave = async () => {
   try {
     const res = await axios.put(
-      "http://localhost:5000/restaurants/profile",
+      "https://food-delivery-service-production.up.railway.app/restaurants/profile",
       restaurant,
       {
         withCredentials: true,

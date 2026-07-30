@@ -31,7 +31,7 @@ const AddmenuItem = (props: Iprops) => {
   const handleSubmit = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/menu-items",
+        "https://food-delivery-service-production.up.railway.app/menu-items",
         ItemData,
         {
           withCredentials: true,

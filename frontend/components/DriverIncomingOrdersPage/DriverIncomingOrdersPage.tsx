@@ -28,7 +28,7 @@ const DriverIncomingOrdersPage: React.FC = () => {
    const fetchOrders = async () => {
       try {
         setLoading(true);
-        const res = await axios.get('http://localhost:5000/api/driver/orders', {
+        const res = await axios.get('https://food-delivery-service-production.up.railway.app/api/driver/orders', {
           withCredentials: true,
         });
         setOrders(res.data.data || []);
@@ -42,7 +42,7 @@ const DriverIncomingOrdersPage: React.FC = () => {
     const fetchAvailability = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/driver/availability",
+          "https://food-delivery-service-production.up.railway.app/api/driver/availability",
           {
             withCredentials: true,
           }
@@ -59,11 +59,11 @@ const DriverIncomingOrdersPage: React.FC = () => {
     try {
       setAvailability(status);  
       await axios.put(
-        "http://localhost:5000/api/driver/availability",
+        "https://food-delivery-service-production.up.railway.app/api/driver/availability",
         { status },
         { withCredentials: true }
       );
-    } catch (error) {
+    } catch (error:any) {
       console.error(
         "Error updating availability:",
         error.response?.data || error
@@ -93,14 +93,14 @@ const DriverIncomingOrdersPage: React.FC = () => {
 
     if (newStatus === "In Delivery") {
 
-      url = `http://localhost:5000/api/driver/orders/${orderId}/startDelivery`;
+      url = `https://food-delivery-service-production.up.railway.app/api/driver/orders/${orderId}/startDelivery`;
 
       setAvailability("Not Available");
 
 
     } else if (newStatus === "Delivered") {
 
-      url = `http://localhost:5000/api/driver/orders/${orderId}/delivered`;
+      url = `https://food-delivery-service-production.up.railway.app/api/driver/orders/${orderId}/delivered`;
 
       setAvailability("Available");
 

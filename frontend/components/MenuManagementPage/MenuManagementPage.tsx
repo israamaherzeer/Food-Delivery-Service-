@@ -36,7 +36,7 @@ const MenuManagementPage: React.FC = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/users/profile", {
+        const response = await axios.get("https://food-delivery-service-production.up.railway.app/users/profile", {
           withCredentials: true, 
         });
 
@@ -58,7 +58,7 @@ const confirmDelete = async () => {
   if (!menuItemTodelete) return;
 
   try {
-    await axios.delete(`http://localhost:5000/menu-items/${menuItemTodelete}`, {
+    await axios.delete(`https://food-delivery-service-production.up.railway.app/menu-items/${menuItemTodelete}`, {
       withCredentials: true,  
       headers: {
         Accept: "application/json",

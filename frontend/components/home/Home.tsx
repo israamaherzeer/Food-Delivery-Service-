@@ -64,8 +64,8 @@ setLoading(true);
 
 const url =
   selectedCategory === "All"
-    ? "http://localhost:5000/restaurants"
-    : `http://localhost:5000/restaurants/category?category=${encodeURIComponent(selectedCategory)}`;
+    ? "https://food-delivery-service-production.up.railway.app/restaurants"
+    : `https://food-delivery-service-production.up.railway.app/restaurants/category?category=${encodeURIComponent(selectedCategory)}`;
 
 const res =
 await axios.get(url,{
@@ -86,7 +86,7 @@ try{
 
 const status =
 await axios.get(
-`http://localhost:5000/restaurants/status/${rest._id}`,
+`https://food-delivery-service-production.up.railway.app/restaurants/status/${rest._id}`,
 {
 withCredentials:true
 }

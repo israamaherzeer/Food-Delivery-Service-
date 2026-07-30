@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/restaurants': 'http://localhost:5000',
+      '/restaurants': 'https://food-delivery-service-production.up.railway.app',
     },
   },
 })

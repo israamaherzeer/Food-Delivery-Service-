@@ -27,7 +27,7 @@ export const useCartContext = () => {
   return context;
 };
 
-const API_BASE_URL = 'http://localhost:5000/api/cart';
+const API_BASE_URL = 'https://food-delivery-service-production.up.railway.app/api/cart';
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<{ [id: string]: CartItem }>({});
@@ -150,6 +150,9 @@ const handleAddToCart = async (item: MenuItem) => {
         openCart,
         onClose: closeCart,
         toggleCart,
+        clearCart: () => {
+  setCartItems({});
+},
       }}
     >
       {children}

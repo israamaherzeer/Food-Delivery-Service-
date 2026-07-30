@@ -13,6 +13,8 @@ export interface IRestaurant {
   closing_time: string;
   totalRating: number;
   phone_number:number
+  ;isOpen?: boolean;
+  
   
 }
  export interface MenuItem {
@@ -75,6 +77,16 @@ export interface CartItem {
      name: string;
      phoneNumber: string;
    };
+   items: {
+  name: string;
+  quantity: number;
+  price: number;
+}[];
+restaurant?: {
+  deliveryPrice?: number;
+};
+
+restaurant_rating?: number;
    status: "Pending" | "In Preparation" | "Out for Delivery" | "Delivered" |"Searching for driver";
  }
 

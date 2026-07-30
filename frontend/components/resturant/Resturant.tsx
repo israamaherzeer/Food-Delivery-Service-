@@ -37,7 +37,7 @@ const Resturant = (props: Iprops) => {
     const fetchStatus = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/restaurants/status/${props.resturant._id}`,
+          `https://food-delivery-service-production.up.railway.app/restaurants/status/${props.resturant._id}`,
           { withCredentials: true }
         );
         setIsOpen(res.data?.data?.isOpen || false);
@@ -64,7 +64,7 @@ const Resturant = (props: Iprops) => {
       props.resturant.imageUrl
       ? props.resturant.imageUrl.startsWith("http")
       ? props.resturant.imageUrl
-      : `http://localhost:5000/uploads/${props.resturant.imageUrl}`
+      : `https://food-delivery-service-production.up.railway.app/uploads/${props.resturant.imageUrl}`
       : "/default-restaurant.png"
     }
     className={style.logo}

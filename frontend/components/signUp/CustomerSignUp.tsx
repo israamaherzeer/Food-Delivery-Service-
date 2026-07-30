@@ -21,7 +21,7 @@ const CustomerSignUp = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/users/signup/customer", formData);
+      const res = await axios.post("https://food-delivery-service-production.up.railway.app/users/signup/customer", formData);
       console.log("Signup success:", res.data);
       navigate("/home");
 

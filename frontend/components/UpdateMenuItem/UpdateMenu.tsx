@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { MenuItem } from "../../types";
+import type { MenuItem } from "../../types";
 import style from './UpdateMenuItem.module.css'
 import axios from "axios";
 
@@ -50,7 +50,7 @@ const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
   try {
     const res = await axios.put(
-      `http://localhost:5000/menu-items/${initialData._id}`,
+      `https://food-delivery-service-production.up.railway.app/menu-items/${initialData._id}`,
       {
         name: ItemData.name,
         description: ItemData.description,

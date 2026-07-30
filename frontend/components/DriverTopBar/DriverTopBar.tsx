@@ -13,7 +13,7 @@ const DriverTopBar: React.FC<DriverTopBarProps> = ({ userRole }) => {
    const navigate = useNavigate();
   const handleLogout = async () => {
     await axios.post(
-      "http://localhost:5000/users/logout",
+      "https://food-delivery-service-production.up.railway.app/users/logout",
 
       {
         withCredentials: true,

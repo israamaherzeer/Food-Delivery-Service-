@@ -20,7 +20,7 @@ const DriverProfile = () => {
     useEffect(() => {
       const fetchProfile = async () => {
         try {
-          const res = await axios.get("http://localhost:5000/users/profile", 
+          const res = await axios.get("https://food-delivery-service-production.up.railway.app/users/profile", 
           { withCredentials: true }
           );
           const data = res.data;
@@ -46,7 +46,7 @@ const DriverProfile = () => {
 
     try {
       const res = await axios.put(
-        "http://localhost:5000/api/driver/profile",
+        "https://food-delivery-service-production.up.railway.app/api/driver/profile",
         {
           full_name: user.full_name,
           phone_number: user.phone_number,
