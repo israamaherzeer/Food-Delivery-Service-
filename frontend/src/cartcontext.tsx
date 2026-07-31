@@ -38,7 +38,13 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const fetchCart = async () => {
     try {
-      const res = await axios.get(API_BASE_URL, { withCredentials: true });
+     const token = localStorage.getItem("token");
+
+const res = await axios.get(API_BASE_URL, {
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
+});
       const itemsArray: CartItem[] = res.data.data.items || [];
 
       const itemsObj = itemsArray.reduce((acc, item) => {
@@ -70,14 +76,18 @@ const handleAddToCart = async (item: MenuItem) => {
   }));
 
   try {
-    const res = await axios.post(
-      `${API_BASE_URL}/add`,
-      {
-        productId: item._id,
-        quantity: 1,
-      },
-      { withCredentials: true }
-    );
+  const res = await axios.post(
+  `${API_BASE_URL}/add`,
+  {
+    productId: item._id,
+    quantity: 1,
+  },
+  {
+    headers:{
+      Authorization:`Bearer ${localStorage.getItem("token")}`
+    }
+  }
+);
 
     const itemsArray = res.data.data.items || [];
 
@@ -97,7 +107,11 @@ const handleAddToCart = async (item: MenuItem) => {
     if (quantity < 1) {
       try {
       
-        await axios.delete(`${API_BASE_URL}/${id}`,{ withCredentials: true });
+        await axios.delete(`${API_BASE_URL}/${id}`,{
+ headers:{
+  Authorization:`Bearer ${localStorage.getItem("token")}`
+ }
+});
         setCartItems(prev => {
           const { [id]: _, ...rest } = prev;
           return rest;
