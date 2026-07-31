@@ -94,7 +94,7 @@ router.post("/login",
                 res.status(200)
                     .cookie(
                         "userToken", data.token,
-                        { httpOnly: true, secure: true, sameSite: "none" })
+                        { httpOnly: true, secure: true, sameSite: "none", path: "/"  })
                     .json({
                         "status": "success",
                         "message": "Login successfully",
