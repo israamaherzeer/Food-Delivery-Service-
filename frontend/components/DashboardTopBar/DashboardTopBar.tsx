@@ -37,7 +37,7 @@ const DashboardTopBar: React.FC<DashboardTopBarProps> = ({ userRole }) => {
           onClick={() => navigate("/restaurant/dashboard")}
           className={style.logContainer}
         >
-          <img src="../../assets/logo3.png" alt="logo" className={style.logo} />
+          <img src="/logo3.png" alt="logo" className={style.logo} />
           <span className={style.dashboardText}>
             {" "}
             {"  "}Restaurant Dashboard

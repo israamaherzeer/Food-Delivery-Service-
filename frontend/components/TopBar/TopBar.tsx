@@ -31,7 +31,7 @@ const showSearch = location.pathname === "/home";
     <header className="topbar">
       <div className="topbar-container">
         <div onClick={() => navigate("/home")} style={{ cursor: "pointer" }}>
-          <img src="../../assets/logo3.png" alt="logo" className="logo" />
+          <img src="/logo3.png" alt="logo" className="logo" />
         </div>
 
       {showSearch && (

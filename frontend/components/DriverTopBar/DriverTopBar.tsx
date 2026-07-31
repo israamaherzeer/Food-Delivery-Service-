@@ -30,7 +30,7 @@ const DriverTopBar: React.FC<DriverTopBarProps> = ({ userRole }) => {
           onClick={() => navigate("/driver/incoming-orders")}
           className={style.logContainer}
         >
-          <img src="../../assets/logo3.png" alt="logo" className={style.logo} />
+          <img src="/logo3.png" alt="logo" className={style.logo} />
           <span className={style.dashboardText}>
             {" "}
             {"  "} Delivery Driver Dashboard
