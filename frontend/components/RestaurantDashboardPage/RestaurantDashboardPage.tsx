@@ -20,11 +20,17 @@ const RestaurantDashboardPage: React.FC = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get("https://food-delivery-service-production.up.railway.app/api/orders/restaurant-orders",
-        {
-          withCredentials: true, 
-        }
-      );
+      const token = localStorage.getItem("token");
+
+const response = await axios.get(
+  "https://food-delivery-service-production.up.railway.app/api/orders/restaurant-orders",
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
+    
   
       const formattedOrders = response.data.data.map((order: any) => ({
         ...order,
@@ -56,11 +62,17 @@ const RestaurantDashboardPage: React.FC = () => {
     newStatus: "In Preparation" | "Out for Delivery" | "Delivered"
   ) => {
     try {
-      await axios.put(
-        `https://food-delivery-service-production.up.railway.app/api/orders/${orderId}/preparation`,
-        { status: 'In Preparation' },
-        { withCredentials: true }
-      );
+     const token = localStorage.getItem("token");
+
+await axios.put(
+  `https://food-delivery-service-production.up.railway.app/api/orders/${orderId}/preparation`,
+  { status: 'In Preparation' },
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
       setOrders((prevOrders) =>
         prevOrders.map((order) => {
           if (order._id === orderId) {
@@ -85,11 +97,17 @@ const RestaurantDashboardPage: React.FC = () => {
     newStatus: "Searching for driver"
   ) => {
     try {
-      const res = await axios.put(
-        `https://food-delivery-service-production.up.railway.app/api/orders/${orderId}/searchingForDriver`,
-        { status: newStatus },
-        { withCredentials: true }
-      );
+    const token = localStorage.getItem("token");
+
+const res = await axios.put(
+  `https://food-delivery-service-production.up.railway.app/api/orders/${orderId}/searchingForDriver`,
+  { status: newStatus },
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
       setOrders((prevOrders) =>
         prevOrders.map((order) => {
           if (order._id === orderId) {
