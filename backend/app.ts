@@ -26,6 +26,7 @@ app.use(cors({
   origin: "https://food-delivery-service2.pages.dev",
   credentials: true,
 }));
+//
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
