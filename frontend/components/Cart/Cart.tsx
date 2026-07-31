@@ -166,7 +166,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
           {loading ? (
            <div className="empty-cart">
             <p>Loading...</p>
-            <img src="/loading.png" style={{ marginLeft:"30px",width: "70px", height:"80px" }} />
+            <img src="/loading2.png" style={{ marginLeft:"30px",width: "70px", height:"80px" }} />
           </div>
           ) : cartItems.length === 0 ? (
             <div className="empty-cart">
