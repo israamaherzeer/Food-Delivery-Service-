@@ -199,7 +199,7 @@ const DriverIncomingOrdersPage: React.FC = () => {
           {loading? 
             <div className={style.loading}>
               <img
-                src="../../assets/loading2.png"
+                src="/loading2.png"
                 style={{
                   width: "100px",
                   height: "100px"

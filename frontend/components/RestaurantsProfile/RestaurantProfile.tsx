@@ -53,7 +53,7 @@ const RestaurantProfile: React.FC = () => {
     <div className="App">
       { !restaurant ? <div className="empty">
         <img
-          src="../../assets/loaginBar.png"
+          src="/loaginBar.png"
           style={{
             width: "300px",
             height: "200px"

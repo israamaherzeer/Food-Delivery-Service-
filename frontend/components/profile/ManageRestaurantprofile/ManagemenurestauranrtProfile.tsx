@@ -75,7 +75,7 @@ if (!restaurant) {
       <DashboardTopBar userRole="restaurant" />
       <div className={style.loadingContainer}>
         <img
-          src="../../../assets/loaginBar.png"
+          src="/loaginBar.png"
           alt="Loading..."
           className={style.loadingImage}
         />
