@@ -23,7 +23,7 @@ const app = express();
 const PORT = Number(process.env.PORT) || 5000;
 
 app.use(cors({
-  origin: true,
+  origin: "https://food-delivery-service2.pages.dev",
   credentials: true,
 }));
 
