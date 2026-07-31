@@ -32,11 +32,16 @@ const ManageRestaurantProfile: React.FC = () => {
 
     const fetchRestaurant = async () => {
       try {
-        const res = await axios.get(`https://food-delivery-service-production.up.railway.app/users/profile`,
-          {
-            withCredentials: true,
-          }
-        );
+      const token = localStorage.getItem("token");
+
+const res = await axios.get(
+  "https://food-delivery-service-production.up.railway.app/users/profile",
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
         const profileData = res.data.user;
          if (profileData && profileData.menuItems) {
              setRestaurant(profileData);

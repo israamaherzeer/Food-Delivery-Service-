@@ -24,6 +24,7 @@ const Login = () => {
         { withCredentials: true } 
       );
       if (response.data.status === "success") {
+        localStorage.setItem("token", response.data.data.token);
         console.log("success mais");
         const userType = response.data.data.type;
         console.log(userType);
