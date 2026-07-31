@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from "../../src/api/axios.ts";
 import './Cart.css';
 import type { CartItem } from '../../types';
 
@@ -25,7 +25,7 @@ interface CartProps {
   ) => void;
 }
 
-const API_BASE_URL = 'https://food-delivery-service-production.up.railway.app/api/cart';
+
 
 const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
   const [itemToDelete, setItemToDelete] = useState<CartItemWithMenu | null>(null);
@@ -38,7 +38,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
   const fetchCart = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(API_BASE_URL, { withCredentials: true });
+      const res = await api.get("/api/cart");
      console.log("FETCH CART DATA:", res.data);
      alert(JSON.stringify(res.data));
       if(res.data.data.restaurant !== null&&res.data.data.items){
@@ -82,17 +82,18 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
     try {
       if (diff > 0) {
         // console.log("im here!", itemId);
-        const res = await axios.post(`${API_BASE_URL}/add`, {
-          productId: itemId,
-          quantity: diff,
-        }, { withCredentials: true });
+        const res =await api.post("/api/cart/add", {
+  productId: itemId,
+  quantity: diff,
+});
         setCartItems(res.data.data.items);
       } else {
         const item = cartItems.find(item => item.menuItem._id === itemId);
 
-        if(item) await axios.delete(`${API_BASE_URL}/${item._id}`, { withCredentials: true });
+        if(item) await 
+       await api.delete(`/api/cart/${item._id}`);
         if (newQuantity > 0) {
-          const res = await axios.post(`${API_BASE_URL}/add`, {
+          const res = await api.post(`api/add`, {
             productId: itemId,
             quantity: newQuantity,
           }, { withCredentials: true });
@@ -117,7 +118,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
     if (!itemToDelete) return;
 
     try {
-      await axios.delete(`${API_BASE_URL}/${itemToDelete._id}`, { withCredentials: true });
+      await api.delete("/api/cart/clear");
       setCartItems(prev => {
         const updatedCart = prev.filter(item => item._id !== itemToDelete._id);
         if (updatedCart.length === 0) {
@@ -137,7 +138,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
 
   const clearCart = async () => {
   try {
-    await axios.delete(`${API_BASE_URL}/clear`, { withCredentials: true });
+    await api.delete("/api/cart/clear");
     setCartItems([]);
   } catch (error) {
     console.error("Failed to clear cart:", error);
