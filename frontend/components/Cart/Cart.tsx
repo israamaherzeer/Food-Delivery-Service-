@@ -39,7 +39,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
     try {
       setLoading(true);
       const res = await axios.get(API_BASE_URL, { withCredentials: true });
-      console.log("mais anaaaaaaaa ",res);
+     console.log("FETCH CART DATA:", res.data);
       if(res.data.data.restaurant !== null&&res.data.data.items){
         setDeliveryFee(res.data.data.restaurant.deliveryPrice);
         setCartItems(res.data.data.items || []);
