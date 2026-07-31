@@ -65,7 +65,7 @@ const navigate = useNavigate();
       <div className={style.page}>
 
         <img
-          src="../../../assets/loginBG.png"
+          src="/loginBG.png"
           alt="loginBG"
           className={style.image}
         />

@@ -45,7 +45,7 @@ const Login = () => {
 
   return (
    <div className={style.page}>
-      <img src='../../../assets/loginBG.png' alt="loginBG" className={style.image} />
+      <img src='/loginBG.png' alt="loginBG" className={style.image} />
 
       <div className={style.Container}>
         <h3 className={style.title}>Login</h3>

@@ -33,7 +33,7 @@ const CustomerSignUp = () => {
 
   return (
     <div className={style.page}>
-      <img src='../../../assets/loginBG.png' alt="loginBG" className={style.image} />
+      <img src='/loginBG.png' alt="loginBG" className={style.image} />
       <div className={style.Container} >
         <h3 className={style.title}>Customer Sign up</h3>
         <form onSubmit={handleSubmit}>

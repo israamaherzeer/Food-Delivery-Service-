@@ -147,7 +147,7 @@ const navigate = useNavigate();
 
 
       <img
-        src="../../../assets/loginBG.png"
+        src="/loginBG.png"
         className={style.restaurantImage}
         alt="background"
       />
