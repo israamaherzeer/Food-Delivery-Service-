@@ -22,8 +22,12 @@ const app = express();
 
 const PORT = Number(process.env.PORT) || 5000;
 
+// app.use(cors({
+//   origin: true,
+//   credentials: true,
+// }));
 app.use(cors({
-  origin: true,
+  origin: "https://e31d3026.food-delivery-service2.pages.dev",
   credentials: true,
 }));
 app.use(express.json());
