@@ -192,24 +192,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                       <h3>{item.menuItem.name}</h3>
                       <p>{item.menuItem.price?.toFixed(2) || "0.00"} ₪ each</p>
                       <div className="quantity-controls">
-                        <button
-                          className="quantity-btn"
-                          onClick={() =>
-                            handleUpdateQuantity(item.menuItem._id, item.quantity - 1)
-                          }
-                          disabled={item.quantity <= 1}
-                        >
-                          -
-                        </button>
-                        <span className="quantity">{item.quantity}</span>
-                        <button
-                          className="quantity-btn plus"
-                          onClick={() =>
-                            handleUpdateQuantity(item.menuItem._id, item.quantity + 1)
-                          }
-                        >
-                          +
-                        </button>
+
                         <button
                           className="remove-btn"
                           onClick={() => requestDeleteItem(item)}
