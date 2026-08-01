@@ -15,8 +15,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import style from "./CustomerProfile.module.css";
 import { useEffect, useState } from "react";
-import axios from "axios";
 
+
+import api from "../../../src/api/axios";
 interface OrderItem {
   name: string;
   price: number;
@@ -60,17 +61,13 @@ const CustomerProfile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await axios.get("https://food-delivery-service-production.up.railway.app/users/profile", {
-          withCredentials: true,
-        });
+      const res = await api.get("/users/profile");
         const data = res.data;
         setUser(data.user);
         setFullName(data.user.full_name || "");
         setPhoneNumber(data.user.phone_number || "");
 
-        const addressRes = await axios.get("https://food-delivery-service-production.up.railway.app/customer-profile/address", {
-          withCredentials: true,
-        });
+       const addressRes = await api.get("/customer-profile/address");;
         setAddresses(addressRes.data.data || []);
 
         setOriginalData({
@@ -85,8 +82,7 @@ const CustomerProfile = () => {
 
     const fetchOrders = async () => {
   try {
-    const res = await axios.get("https://food-delivery-service-production.up.railway.app/api/orders", { withCredentials: true });
-
+  const res = await api.get("/api/orders");
     const formattedOrders: Order[] = (res.data.data || []).map((order: any) => ({
       orderId: order._id || "UNKNOWN_ID",
       date: order.createdAt || new Date().toISOString(),
@@ -152,9 +148,7 @@ const CustomerProfile = () => {
 
     if (addrToDelete._id) {
       try {
-        await axios.delete(`https://food-delivery-service-production.up.railway.app/customer-profile/address/${addrToDelete._id}`, {
-          withCredentials: true,
-        });
+       await api.delete(`/customer-profile/address/${addrToDelete._id}`);
       } catch (err) {
         console.error("Error deleting address", err);
         return;
@@ -170,31 +164,25 @@ const CustomerProfile = () => {
     if (!user) return;
 
     try {
-      await axios.put(
-        `https://food-delivery-service-production.up.railway.app/customer-profile/users/${user._id}`,
-        {
-          full_name: fullName,
-          phone_number: phoneNumber,
-        },
-        { withCredentials: true }
-      );
+    await api.put(
+  `/customer-profile/users/${user._id}`,
+  {
+    full_name: fullName,
+    phone_number: phoneNumber,
+  }
+);
 
       for (const addr of addresses) {
         if (!addr._id) {
-          await axios.post(
-            "https://food-delivery-service-production.up.railway.app/customer-profile/address",
-            {
-              label: addr.label,
-              address: addr.address,
-            },
-            { withCredentials: true }
-          );
+        await api.post("/customer-profile/address", {
+  label: addr.label,
+  address: addr.address,
+});
         } else {
-          await axios.put(
-            `https://food-delivery-service-production.up.railway.app/customer-profile/address/${addr._id}`,
-            { address: addr.address },
-            { withCredentials: true }
-          );
+         await api.put(
+  `/customer-profile/address/${addr._id}`,
+  { address: addr.address }
+);
         }
       }
 
@@ -228,11 +216,10 @@ const CustomerProfile = () => {
         setDriverRating((prev) => ({ ...prev, [orderId]: rating }));
       }
 
-      await axios.put(`https://food-delivery-service-production.up.railway.app/api/orders/${orderId}/rating`, {
-        type,
-        rating,
-      }, { withCredentials: true });
-
+    await api.put(`/api/orders/${orderId}/rating`, {
+  type,
+  rating,
+});
       console.log("Rating submitted successfully!");
     } catch (err) {
       console.error("Error submitting rating:", err);
