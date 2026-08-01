@@ -62,53 +62,23 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
   }, [isOpen]);
 
 
-  const handleUpdateQuantity = async (itemId: string, newQuantity: number) => {
-    console.log("im in the handle update quantiti!!!!! ");
-    if (newQuantity < 1){
-      console.log("less than 1");
-      
-      return;
-    } 
+ const handleUpdateQuantity = async (itemId: string, newQuantity: number) => {
 
-    const currentItem = cartItems.find(item => item.menuItem._id === itemId);
-    if (!currentItem) {
-      console.log("no currentItem");
-      return;
-    }
-    console.log("this is the current item " ,currentItem);
-    const diff = newQuantity - currentItem.quantity;
-    if (diff === 0) return;
+  if (newQuantity < 1) return;
 
-    try {
-      if (diff > 0) {
-        // console.log("im here!", itemId);
-        const res =await api.post("/api/cart/add", {
-  productId: itemId,
-  quantity: diff,
-});
-        setCartItems(res.data.data.items);
-      } else {
-        const item = cartItems.find(item => item.menuItem._id === itemId);
+  try {
 
-        if(item) await 
-       await api.delete(`/api/cart/${item._id}`);
-        if (newQuantity > 0) {
-          const res = await api.post(`api/add`, {
-            productId: itemId,
-            quantity: newQuantity,
-          }, { withCredentials: true });
-          setCartItems(res.data.data.items);
-        } else {
-          setCartItems(prev => prev.filter(item => item._id !== itemId));
-        }
-      
-      }
-      console.log("im the length ", cartItems.length)
-      
-    } catch (error) {
-      console.error("Failed to update quantity:", error);
-    }
-  };
+    const res = await api.post("/api/cart/update", {
+      productId: itemId,
+      quantity: newQuantity,
+    });
+
+    setCartItems(res.data.data.items);
+
+  } catch (error) {
+    console.error("Failed to update quantity:", error);
+  }
+};
 
   const requestDeleteItem = (item: CartItem) => {
     setItemToDelete(item);
@@ -192,7 +162,24 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                       <h3>{item.menuItem.name}</h3>
                       <p>{item.menuItem.price?.toFixed(2) || "0.00"} ₪ each</p>
                       <div className="quantity-controls">
-
+                        <button
+                          className="quantity-btn"
+                          onClick={() =>
+                            handleUpdateQuantity(item.menuItem._id, item.quantity - 1)
+                          }
+                          disabled={item.quantity <= 1}
+                        >
+                          -
+                        </button>
+                        <span className="quantity">{item.quantity}</span>
+                        <button
+                          className="quantity-btn plus"
+                          onClick={() =>
+                            handleUpdateQuantity(item.menuItem._id, item.quantity + 1)
+                          }
+                        >
+                          +
+                        </button>
                         <button
                           className="remove-btn"
                           onClick={() => requestDeleteItem(item)}

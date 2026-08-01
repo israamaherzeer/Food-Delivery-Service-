@@ -73,7 +73,7 @@ const addItemToCart = async (
 
   if (existingItem) {
 
-   existingItem.quantity = quantity;
+    existingItem.quantity += quantity;
     await existingItem.save();
 
     // تأكد أن العنصر موجود داخل cart.items

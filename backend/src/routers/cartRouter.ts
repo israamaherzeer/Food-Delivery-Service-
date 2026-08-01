@@ -13,6 +13,7 @@ import {Customer} from '../models/Customer.js';
 import { authenticate } from '../middleware/auth/authenticate.js';
 import { authorize } from '../middleware/auth/authorize.js';
 
+
 const router = express.Router();
 
 router.get("/", authenticate, async (req:Request, res:Response, next:NextFunction) => {
@@ -75,6 +76,9 @@ router.delete("/clear", authenticate,
   
   const cart = await Cart.findOne({ customer: userId });
   if (cart) {
+       await CartItem.deleteMany({
+        cart: cart._id,
+      });
     cart.items = [];
     cart.restaurant = null;
     await cart.save();

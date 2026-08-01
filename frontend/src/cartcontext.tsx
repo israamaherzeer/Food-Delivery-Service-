@@ -64,42 +64,32 @@ const res = await axios.get(API_BASE_URL, {
 
 const handleAddToCart = async (item: MenuItem) => {
 
-  // تحديث فوري للواجهة
-  setCartItems(prev => ({
-    ...prev,
-    [item._id]: {
-      ...(prev[item._id] || {}),
-      _id: prev[item._id]?._id || "",
-      menuItem: item,
-      quantity: (prev[item._id]?.quantity || 0) + 1,
-    } as any
-  }));
-
   try {
-  const res = await axios.post(
-  `${API_BASE_URL}/add`,
-  {
-    productId: item._id,
-    quantity: 1,
-  },
-  {
-    headers:{
-      Authorization:`Bearer ${localStorage.getItem("token")}`
-    }
-  }
-);
+    const res = await axios.post(
+      `${API_BASE_URL}/add`,
+      {
+        productId: item._id,
+        quantity: 1,
+      },
+      {
+        headers:{
+          Authorization:`Bearer ${localStorage.getItem("token")}`
+        }
+      }
+    );
 
     const itemsArray = res.data.data.items || [];
 
-    const itemsObj = itemsArray.reduce((acc: any, item: any) => {
-      acc[item.menuItem._id] = item;
+    const itemsObj = itemsArray.reduce((acc: any, cartItem: any) => {
+      acc[cartItem.menuItem._id] = cartItem;
       return acc;
     }, {});
 
     setCartItems(itemsObj);
 
   } catch (error) {
-    fetchCart(); // إذا فشل الطلب أعد مزامنة السلة
+    console.error(error);
+    fetchCart();
   }
 };
 
