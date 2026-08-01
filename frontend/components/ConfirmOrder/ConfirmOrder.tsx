@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import style from "./ConfirmOrder.module.css";
 import type { CartItem } from "../../types";
-import axios from "axios";
+
 import Notification from "../Notification/Notification";
 import api from "../../src/api/axios";
 

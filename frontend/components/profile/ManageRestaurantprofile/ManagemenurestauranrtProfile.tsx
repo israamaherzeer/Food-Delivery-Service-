@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useCartContext } from "../../../src/cartcontext";
 import type { IRestaurant } from "../../../types";
@@ -11,7 +10,7 @@ import style from './ManageMenuresturaentProfile.module.css'
 import DashboardTopBar from "../../DashboardTopBar/DashboardTopBar";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import api from "../../../src/api/axios";
 
 const ManageRestaurantProfile: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState("All");
@@ -32,16 +31,9 @@ const ManageRestaurantProfile: React.FC = () => {
 
     const fetchRestaurant = async () => {
       try {
-      const token = localStorage.getItem("token");
+     
 
-const res = await axios.get(
-  "https://food-delivery-service-production.up.railway.app/users/profile",
-  {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }
-);
+const res = await api.get("/users/profile");
         const profileData = res.data.user;
          if (profileData && profileData.menuItems) {
              setRestaurant(profileData);
@@ -57,13 +49,10 @@ const res = await axios.get(
   console.log(restaurant);
 const handleSave = async () => {
   try {
-    const res = await axios.put(
-      "https://food-delivery-service-production.up.railway.app/restaurants/profile",
-      restaurant,
-      {
-        withCredentials: true,
-      }
-    );
+    const res = await api.put(
+  "/restaurants/profile",
+  restaurant
+);
 
     setRestaurant(res.data.data);
     setIsEditing(false);
