@@ -3,7 +3,7 @@ import { useState } from "react";
 import style from "./addmenuItem.module.css";
 import axios from "axios";
 import type { MenuItem } from "../../types";
-
+import api from "../../src/api/axios";
 interface Iprops {
   onClose: () => void;
   onItemAdded: (newItem: MenuItem) => void;
@@ -16,6 +16,7 @@ const AddmenuItem = (props: Iprops) => {
     type: "",
     image_url: "",
   });
+
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
@@ -30,16 +31,7 @@ const AddmenuItem = (props: Iprops) => {
 
   const handleSubmit = async () => {
     try {
-      const res = await axios.post(
-        "https://food-delivery-service-production.up.railway.app/menu-items",
-        ItemData,
-        {
-          withCredentials: true,
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+     const res = await api.post("/menu-items", ItemData);
 
       props.onItemAdded(res.data.menuItem);
       props.onClose();

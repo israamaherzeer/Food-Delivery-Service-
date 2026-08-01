@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './MenuGrid.css';
-import axios from 'axios';
 import type { CartItem, MenuItem } from '../../types';
+import api from "../../src/api/axios";
 
 interface MenuGridProps {
   activeFilter: string;
@@ -29,9 +29,7 @@ useEffect(() => {
       setLoading(true);
 
     
-      const menuRes = await axios.get(`https://food-delivery-service-production.up.railway.app/menu-items`, {
-        withCredentials: true,
-      });
+      const menuRes = await api.get("/menu-items");
       const allItems = menuRes.data.data;
       const filteredByRestaurant = allItems.filter(
         (item: MenuItem) => item.restaurant === resturentId
@@ -39,10 +37,9 @@ useEffect(() => {
       setMenuItem(filteredByRestaurant);
 
       
-      const statusRes = await axios.get(
-        `https://food-delivery-service-production.up.railway.app/restaurants/status/${resturentId}`,
-        { withCredentials: true }
-      );
+      const statusRes = await api.get(
+  `/restaurants/status/${resturentId}`
+);
       setIsRestaurantOpen(statusRes.data.data.isOpen);
 
     } catch (error) {
