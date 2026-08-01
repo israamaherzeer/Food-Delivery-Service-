@@ -143,6 +143,9 @@ const removeItemFromCart = async (customerId: string, cartItemId: string) => {
   await CartItem.findByIdAndDelete(cartItemId);
 
   cart.items.splice(itemIndex, 1);
+  if (cart.items.length === 0) {
+  cart.restaurant = null;
+}
   await cart.save();
 
   return { message: "Item removed from cart" };
