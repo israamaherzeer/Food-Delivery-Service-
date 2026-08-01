@@ -3,6 +3,7 @@ import style from "./ConfirmOrder.module.css";
 import type { CartItem } from "../../types";
 import axios from "axios";
 import Notification from "../Notification/Notification";
+import api from "../../src/api/axios";
 
 interface Iprops {
   onClose: () => void;
@@ -33,9 +34,9 @@ const [showError, setShowError] = useState(false);
   useEffect(() => {
     const fetchAddresses = async () => {
       try {
-        const res = await axios.get("https://food-delivery-service-production.up.railway.app/customer-profile/address", {
-          withCredentials: true,
-        });
+    const res = await api.get("/customer-profile/address");
+  
+      
         setAddresses(res.data.data || []);
       } catch (err) {
         console.error("Error fetching addresses", err);
@@ -75,13 +76,8 @@ const [showError, setShowError] = useState(false);
     };
 
     try {
-     await axios.post(
-  "https://food-delivery-service-production.up.railway.app/api/orders/",
-  orderData,
-  {
-    withCredentials:true,
-  }
-);
+     await api.post("/api/orders", orderData);
+
         
    
       

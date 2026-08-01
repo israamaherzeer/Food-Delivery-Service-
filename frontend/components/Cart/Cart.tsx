@@ -40,7 +40,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
       setLoading(true);
       const res = await api.get("/api/cart");
      console.log("FETCH CART DATA:", res.data);
-     alert(JSON.stringify(res.data));
+   
       if(res.data.data.restaurant !== null&&res.data.data.items){
         setDeliveryFee(res.data.data.restaurant.deliveryPrice);
         setCartItems(res.data.data.items || []);
