@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../../src/api/axios";
 import { Link } from "react-router-dom";
 import style from "./../login/Login.module.css";
 import { useNavigate } from "react-router-dom";
@@ -18,18 +18,42 @@ const CustomerSignUp = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const res = await axios.post("https://food-delivery-service-production.up.railway.app/users/signup/customer", formData);
-      console.log("Signup success:", res.data);
-      navigate("/home");
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-    } catch (error: any) {
-      console.error("Signup failed:", error.response?.data || error.message);
-      alert("Signup failed: " + (error.response?.data?.message || "Something went wrong"));
-    }
-  };
+  try {
+    await api.post(
+      "/users/signup/customer",
+      formData
+    );
+
+    const loginResponse = await api.post(
+      "/users/login",
+      {
+        email: formData.email,
+        password: formData.password,
+      }
+    );
+
+    localStorage.setItem(
+      "token",
+      loginResponse.data.data.token
+    );
+
+    navigate("/home");
+
+  } catch (error: any) {
+    console.error(
+      "Signup failed:",
+      error.response?.data || error.message
+    );
+
+    alert(
+      error.response?.data?.message ||
+      "Something went wrong"
+    );
+  }
+};
 
   return (
     <div className={style.page}>

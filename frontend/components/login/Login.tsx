@@ -1,9 +1,9 @@
 import style from "./Login.module.css";
-import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import React from "react";
+import api from "../../src/api/axios";
 
 
 
@@ -18,11 +18,10 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "https://food-delivery-service-production.up.railway.app/users/login", 
-        { email, password },
-        { withCredentials: true } 
-      );
+ const response = await api.post(
+  "/users/login",
+  { email, password }
+);
       if (response.data.status === "success") {
         localStorage.setItem("token", response.data.data.token);
         console.log("success mais");
