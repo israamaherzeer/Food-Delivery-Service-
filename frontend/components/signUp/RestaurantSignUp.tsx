@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import style from "./RestaurantSignUp.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import api from "../../src/api/axios";
 
 const RestaurantSignUp = () => {
 
@@ -78,28 +78,25 @@ const navigate = useNavigate();
 
     try {
 
-      await axios.post(
-        "https://food-delivery-service-production.up.railway.app/users/signup/restaurant",
-        data,
-        {
-          headers:{
-            "Content-Type":"multipart/form-data"
-          }
-        }
-      );
+      await api.post(
+  "/users/signup/restaurant",
+  data
+);
 
 
-     const loginResponse = await axios.post(
-    "https://food-delivery-service-production.up.railway.app/users/login",
-    {
-      email: formData.email,
-      password: formData.password
-    },
-    {
-      withCredentials:true
-    }
-  );
+    const loginResponse = await api.post(
+  "/users/login",
+  {
+    email: formData.email,
+    password: formData.password
+  }
+);
+localStorage.removeItem("token");
 
+localStorage.setItem(
+  "token",
+  loginResponse.data.data.token
+);
 
   console.log(loginResponse.data);
 
@@ -125,9 +122,7 @@ const navigate = useNavigate();
 
   useEffect(()=>{
 
-    axios.get(
-      "https://food-delivery-service-production.up.railway.app/categories"
-    )
+    api.get("/categories")
     .then(res=>{
 
       setCategories(res.data.data);

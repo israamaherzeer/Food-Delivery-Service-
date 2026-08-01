@@ -1,7 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import style from "./../login/Login.module.css";
 import { useState } from "react";
-import axios from "axios";
+
+import api from "../../src/api/axios";
 
 
 
@@ -28,24 +29,34 @@ const navigate = useNavigate();
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "https://food-delivery-service-production.up.railway.app/users/signup/driver",
-        formData
-      );
+      const response = await api.post(
+  "/users/signup/driver",
+  formData
+);
 
-      const loginResponse = await axios.post(
-      "https://food-delivery-service-production.up.railway.app/users/login",
-      {
-        email: formData.email,
-        password: formData.password
-      },
-      {
-        withCredentials: true
-      }
-    );
+      const loginResponse = await api.post(
+  "/users/login",
+  {
+    email: formData.email,
+    password: formData.password
+  }
+);
+const loginResponse = await api.post(
+  "/users/login",
+  {
+    email: formData.email,
+    password: formData.password
+  }
+);
+
+localStorage.removeItem("token");
+
+localStorage.setItem(
+  "token",
+  loginResponse.data.data.token
+);
 
 
-    console.log(loginResponse.data);
 
 
     alert("Driver account created successfully");
