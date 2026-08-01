@@ -41,13 +41,8 @@ const navigate = useNavigate();
     password: formData.password
   }
 );
-const loginResponse = await api.post(
-  "/users/login",
-  {
-    email: formData.email,
-    password: formData.password
-  }
-);
+
+
 
 localStorage.removeItem("token");
 
