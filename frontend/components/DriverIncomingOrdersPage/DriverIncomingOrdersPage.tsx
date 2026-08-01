@@ -85,29 +85,16 @@ const DriverIncomingOrdersPage: React.FC = () => {
 
 
     if (newStatus === "In Delivery") {
+  url = `/api/driver/orders/${orderId}/startDelivery`;
+  setAvailability("Not Available");
 
-      url = `https://food-delivery-service-production.up.railway.app/api/driver/orders/${orderId}/startDelivery`;
-
-      setAvailability("Not Available");
-
-
-    } else if (newStatus === "Delivered") {
-
-      url = `https://food-delivery-service-production.up.railway.app/api/driver/orders/${orderId}/delivered`;
-
-      setAvailability("Available");
-
-    }
+} else if (newStatus === "Delivered") {
+  url = `/api/driver/orders/${orderId}/delivered`;
+  setAvailability("Available");
+}
 
 
-    await axios.put(
-      url,
-      {},
-      {
-        withCredentials:true
-      }
-    );
-
+await api.put(url, {});
 
     setOrders(prev =>
       prev.map(order =>

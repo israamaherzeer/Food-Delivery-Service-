@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import type { IDriver } from "../../../types";
 import axios from 'axios';
 import DriverTopBar from "../../DriverTopBar/DriverTopBar";
+import api from "../../../src/api/axios";
 
 
 const DriverProfile = () => {
@@ -20,9 +21,7 @@ const DriverProfile = () => {
     useEffect(() => {
       const fetchProfile = async () => {
         try {
-          const res = await axios.get("https://food-delivery-service-production.up.railway.app/users/profile", 
-          { withCredentials: true }
-          );
+        const res = await api.get("/users/profile");
           const data = res.data;
           if (res.status === 200) {
             setUser(data.user);
@@ -45,14 +44,13 @@ const DriverProfile = () => {
     if (!user) return;
 
     try {
-      const res = await axios.put(
-        "https://food-delivery-service-production.up.railway.app/api/driver/profile",
-        {
-          full_name: user.full_name,
-          phone_number: user.phone_number,
-        },
-        { withCredentials: true }
-      );
+      const res = await api.put(
+  "/api/driver/profile",
+  {
+    full_name: user.full_name,
+    phone_number: user.phone_number,
+  }
+);
 
       if (res.status === 200) {
         setIsEditing(false);
