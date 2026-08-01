@@ -63,7 +63,7 @@ const RestaurantHero: React.FC<Iprops> = (props: Iprops) => {
            
             {props.isEditing ? (
               <input
-                type="number"
+                type="text"
                 value={String(props.restaurant.phone_number ?? '')}
                 className="restaurant-input"
                 onChange={(e) =>

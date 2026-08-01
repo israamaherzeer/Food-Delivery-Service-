@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+
 import DriverTopBar from '../DriverTopBar/DriverTopBar';
 import DriverOrderCard from '../DriverOrderCard/DriverOrderCard';
 import style from './DriverIncomingOrdersPage.module.css';
 import { Switch } from "antd";
+import api from '../../src/api/axios';
 
 const DriverIncomingOrdersPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'Pending' | 'In Delivery' | 'Delivered'>('Pending');
@@ -28,9 +29,7 @@ const DriverIncomingOrdersPage: React.FC = () => {
    const fetchOrders = async () => {
       try {
         setLoading(true);
-        const res = await axios.get('https://food-delivery-service-production.up.railway.app/api/driver/orders', {
-          withCredentials: true,
-        });
+       const res = await api.get('/api/driver/orders');
         setOrders(res.data.data || []);
       } catch (err) {
         console.error('Error fetching orders:', err);
@@ -41,12 +40,7 @@ const DriverIncomingOrdersPage: React.FC = () => {
   useEffect(() => {
     const fetchAvailability = async () => {
       try {
-        const res = await axios.get(
-          "https://food-delivery-service-production.up.railway.app/api/driver/availability",
-          {
-            withCredentials: true,
-          }
-        );
+       const res = await api.get("/api/driver/availability");
         setAvailability(res.data.availability);
       } catch (err) {
         console.error("Error fetching availability:", err);
@@ -58,11 +52,10 @@ const DriverIncomingOrdersPage: React.FC = () => {
   const updateAvailability = async (status: "Available" | "Not Available") => {
     try {
       setAvailability(status);  
-      await axios.put(
-        "https://food-delivery-service-production.up.railway.app/api/driver/availability",
-        { status },
-        { withCredentials: true }
-      );
+     await api.put(
+  "/api/driver/availability",
+  { status }
+);
     } catch (error:any) {
       console.error(
         "Error updating availability:",
