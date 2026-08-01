@@ -3,11 +3,10 @@ import DashboardTopBar from '../DashboardTopBar/DashboardTopBar';
 import MenuItemCard from '../MenuItemCard/MenuItemCard';
 import style from './MenuManagementPage.module.css';
 import type { MenuItem } from '../../types';
-import axios from 'axios';
 import AddmenuItem from '../AddMenuItem/addmenuItem';
 import Notification from '../Notification/Notification';
 import UpdateMenuItem from '../UpdateMenuItem/UpdateMenu';
-
+import api from '../../src/api/axios';
 
 
 
@@ -36,9 +35,7 @@ const MenuManagementPage: React.FC = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get("https://food-delivery-service-production.up.railway.app/users/profile", {
-          withCredentials: true, 
-        });
+       const response = await api.get("/users/profile");
 
         const profileData = response.data.user;
 
@@ -58,12 +55,7 @@ const confirmDelete = async () => {
   if (!menuItemTodelete) return;
 
   try {
-    await axios.delete(`https://food-delivery-service-production.up.railway.app/menu-items/${menuItemTodelete}`, {
-      withCredentials: true,  
-      headers: {
-        Accept: "application/json",
-      },
-    });
+    await api.delete(`/menu-items/${menuItemTodelete}`);
 
     setMenuItems((prevItems) =>
       prevItems.filter((item) => item._id !== menuItemTodelete)

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import type { MenuItem } from "../../types";
 import style from './UpdateMenuItem.module.css'
-import axios from "axios";
+import api from "../../src/api/axios";
 
 
 interface UpdateMenuItemProps {
@@ -49,20 +49,16 @@ const UpdateMenuItem = ({
 const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
   try {
-    const res = await axios.put(
-      `https://food-delivery-service-production.up.railway.app/menu-items/${initialData._id}`,
-      {
-        name: ItemData.name,
-        description: ItemData.description,
-        price: parseFloat(ItemData.price as unknown as string),
-        image_url: ItemData.image_url,
-        type: ItemData.type,
-      },
-      {
-        withCredentials: true,
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+ const res = await api.put(
+  `/menu-items/${initialData._id}`,
+  {
+    name: ItemData.name,
+    description: ItemData.description,
+    price: parseFloat(ItemData.price as unknown as string),
+    image_url: ItemData.image_url,
+    type: ItemData.type,
+  }
+);
 
     onItemUpdated(res.data.menuItem);
     onClose();
