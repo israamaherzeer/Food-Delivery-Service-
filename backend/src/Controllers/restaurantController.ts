@@ -80,8 +80,14 @@ const getRestaurantStatus = async (id: string) => {
     const restaurant = await Restaurant.findById(id.trim());
     if (!restaurant) return null;
 
+    console.log("SERVER TIME:", new Date().toString());
+    console.log("Opening:", restaurant.opening_time);
+    console.log("Closing:", restaurant.closing_time);
+
     const open = isOpen(restaurant.opening_time, restaurant.closing_time);
-console.log(new Date().toString());
+
+    console.log("Is Open:", open);
+
     return {
         restaurantId: restaurant._id,
         name: restaurant.name,
