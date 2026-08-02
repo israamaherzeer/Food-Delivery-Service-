@@ -62,7 +62,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ order,deliveryPrice, restaurantRa
           {order.items.map((item, index) => (
             <li key={index} className={style.itemRow}>
               <span>
-                {item.quantity} x {item.name}
+                {item.quantity} x {item.menuItem.name}
               </span>
               <span className={style.itemPrice}>
                 ₪ {(item.quantity * item.price).toFixed(2)}

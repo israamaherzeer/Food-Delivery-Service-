@@ -63,33 +63,45 @@ export interface CartItem {
    name: string;
  }
 
- export interface Order {
-   _id: string;
-   orderNumber: string;
-   full_name: string;
-   phone_number: string;
-   address: string;
-   timeAgo: string;
-   menuItem: OrderItem[];
-   total_price: number;
-   payment_method: string;
-   driverInfo?: {
-     name: string;
-     phoneNumber: string;
-   };
-   items: {
-  name: string;
-  quantity: number;
-  price: number;
-}[];
-restaurant?: {
-  deliveryPrice?: number;
-};
+export interface Order {
+  _id: string;
+  orderNumber: string;
+  full_name: string;
+  phone_number: string;
+  address: string;
+  timeAgo: string;
 
-restaurant_rating?: number;
-   status: "Pending" | "In Preparation" | "Out for Delivery" | "Delivered" |"Searching for driver";
- }
+  items: {
+    quantity: number;
+    price: number;
+    menuItem: {
+      name: string;
+      price: number;
+      _id: string;
+    };
+  }[];
 
+  total_price: number;
+  payment_method: string;
+
+  driverInfo?: {
+    name: string;
+    phoneNumber: string;
+  };
+
+  restaurant?: {
+    deliveryPrice?: number;
+  };
+
+  restaurant_rating?: number;
+
+  status:
+    | "Pending"
+    | "In Preparation"
+    | "Out for Delivery"
+    | "Delivered"
+    | "Searching for driver";
+}
 
 
 
