@@ -7,6 +7,7 @@ import { AppError } from "../utils/errorHandler.js";
 const getRestaurants = async () => {
     const restaurants = await Restaurant.find().populate("user categories");
     return restaurants
+
 }
 
 const getRestaurantById = async (id: string) => {
@@ -80,7 +81,7 @@ const getRestaurantStatus = async (id: string) => {
     if (!restaurant) return null;
 
     const open = isOpen(restaurant.opening_time, restaurant.closing_time);
-
+console.log(new Date().toString());
     return {
         restaurantId: restaurant._id,
         name: restaurant.name,
