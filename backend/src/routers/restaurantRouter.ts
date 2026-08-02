@@ -100,6 +100,7 @@ router.get("/name",
 
 router.get("/status/:id",
     async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+        console.log("STATUS ROUTE HIT:", req.params.id);
         try {
             const id: string = req.params.id;
             const status = await getRestaurantStatus(id);
