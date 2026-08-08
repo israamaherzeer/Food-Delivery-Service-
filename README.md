@@ -109,58 +109,7 @@ The project follows a **decoupled client-server architecture**:
 
 ---
 
-## 📁 Project Folder Structure
 
-```
-Food-Delivery-Service/
-├── backend/
-│   ├── app.ts                     # Express app entry point & route mounting
-│   ├── @types/                    # Shared TypeScript type definitions
-│   └── src/
-│       ├── config/                # DB connection (db.ts) & env loader (env.ts)
-│       ├── Controllers/
-│       │   ├── auth/              # Signup/login logic per role
-│       │   ├── cartController.ts
-│       │   ├── categoryController.ts
-│       │   ├── customerController.ts
-│       │   ├── driverController.ts
-│       │   ├── menuController.ts
-│       │   ├── orderController.ts
-│       │   ├── passwordController.ts
-│       │   └── restaurantController.ts
-│       ├── middleware/
-│       │   ├── auth/              # authenticate.ts, authorize.ts
-│       │   ├── validation/        # request-body validators
-│       │   ├── upload.ts          # multer config
-│       │   └── errorHandler.ts
-│       ├── models/                # Mongoose schemas (User, Order, Restaurant, etc.)
-│       ├── routers/                # Express routers per resource
-│       └── utils/                 # AppError, token generation, mail sender
-│
-├── frontend/
-│   ├── components/                # Feature-based React components
-│   │   ├── login/ · signUp/       # Auth screens
-│   │   ├── home/ · FilterBar/     # Restaurant discovery
-│   │   ├── MenuGrid/ · MenuItemCard/ · AddMenuItem/ · UpdateMenuItem/
-│   │   ├── Cart/ · ConfirmOrder/
-│   │   ├── RestaurantDashboardPage/ · MenuManagementPage/ · RestaurantsProfile/
-│   │   ├── DriverIncomingOrdersPage/ · DriverOrderCard/ · DriverTopBar/
-│   │   ├── profile/
-│   │   │   ├── CustomerProfile/
-│   │   │   ├── ManageRestaurantprofile/
-│   │   │   └── delivery/          # Driver profile
-│   │   ├── OrderCard/ · DashboardTopBar/ · Notification/ · TopBar/
-│   ├── src/
-│   │   ├── App.tsx                # Route definitions
-│   │   ├── cartcontext.tsx        # Global cart state (Context API)
-│   │   └── main.tsx               # App bootstrap
-│   ├── public/ · assets/          # Static assets & images
-│   └── types.ts                   # Shared frontend TypeScript types
-│
-└── README.md
-```
-
----
 
 ## ⚙️ Installation and Setup
 
@@ -228,77 +177,6 @@ NODE_ENV=development
 
 ---
 
-## 🔌 API Overview
-
-All endpoints are prefixed by their router base path shown below. Protected routes require a valid `userToken` cookie (set automatically on login).
-
-### Auth — `/users`
-| Method | Endpoint | Description | Protected |
-|---|---|---|---|
-| POST | `/users/signup/customer` | Register a new customer | No |
-| POST | `/users/signup/driver` | Register a new driver | No |
-| POST | `/users/signup/restaurant` | Register a new restaurant (with image upload) | No |
-| POST | `/users/login` | Login and receive a JWT cookie | No |
-| POST | `/users/logout` | Clear the auth cookie | No |
-| GET | `/users/profile` | Get the logged-in user's role-specific profile | Yes |
-| POST | `/users/forget-password` | Request a password-reset verification code | No |
-| PUT | `/users/reset-password` | Reset password using a verification code | No |
-| PUT | `/users/password` | Change password (logged in) | Yes |
-
-### Restaurants — `/restaurants`
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/restaurants` | List all restaurants |
-| GET | `/restaurants/category?category=` | Filter restaurants by category |
-| GET | `/restaurants/id/:id` | Get a restaurant by ID |
-| GET | `/restaurants/name?name=` | Get a restaurant by name |
-| GET | `/restaurants/status/:id` | Get open/closed status |
-| PUT | `/restaurants/profile` | Update restaurant profile *(protected)* |
-
-### Menu — `/menu-items`
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/menu-items` | List all menu items |
-| POST | `/menu-items` | Add a menu item *(protected)* |
-| PUT | `/menu-items/:id` | Update a menu item *(protected)* |
-| DELETE | `/menu-items/:id` | Delete a menu item |
-
-### Cart — `/api/cart`
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/api/cart` | Get the customer's cart *(protected)* |
-| POST | `/api/cart/add` | Add item to cart *(protected)* |
-| POST | `/api/cart/update` | Update item quantity *(protected)* |
-| DELETE | `/api/cart/:itemId` | Remove an item *(protected)* |
-| DELETE | `/api/cart/clear` | Clear the cart *(protected)* |
-
-### Orders — `/api/orders`
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/api/orders` | Place a new order *(protected)* |
-| GET | `/api/orders` | Get the logged-in customer's orders *(protected)* |
-| GET | `/api/orders/restaurant-orders?status=` | Get a restaurant's orders, optionally filtered *(protected)* |
-| PUT | `/api/orders/:id/preparation` | Restaurant: mark order "In Preparation" *(protected)* |
-| PUT | `/api/orders/:id/searchingForDriver` | Restaurant: release order for driver pickup *(protected)* |
-| PUT | `/api/orders/:id/rating` | Rate the restaurant or driver for an order |
-
-### Driver — `/api/driver`
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/api/driver/drivers/available` | List currently available drivers |
-| GET | `/api/driver/orders` | Get orders relevant to the logged-in driver *(protected)* |
-| PUT | `/api/driver/orders/:id/startDelivery` | Accept a delivery *(protected)* |
-| PUT | `/api/driver/orders/:id/delivered` | Mark a delivery complete *(protected)* |
-| GET | `/api/driver/availability` | Get current availability status *(protected)* |
-| PUT | `/api/driver/availability` | Toggle availability *(protected)* |
-| PUT | `/api/driver/profile` | Update driver profile *(protected)* |
-
-### Categories & Customer Profile
-- `GET/POST /categories` — list or create restaurant categories
-- `PUT /customer-profile/users/:id` — update a customer's name/phone
-- `GET/POST/PUT/DELETE /customer-profile/address` — manage saved addresses *(protected)*
-
----
 
 ## 🔄 User Workflow
 
@@ -323,18 +201,6 @@ All endpoints are prefixed by their router base path shown below. Protected rout
 4. Complete the delivery → `PUT /orders/:id/delivered` sets the order to **Delivered** and automatically frees the driver to accept new orders again.
 
 ---
-
-## 📸 Screenshots
-
-> Add screenshots or GIFs of the running application here to showcase the UI.
-
-| Home / Restaurant Discovery | Restaurant Menu | Cart & Checkout |
-|---|---|---|
-| _[screenshot placeholder]_ | _[screenshot placeholder]_ | _[screenshot placeholder]_ |
-
-| Restaurant Dashboard | Menu Management | Driver Incoming Orders |
-|---|---|---|
-| _[screenshot placeholder]_ | _[screenshot placeholder]_ | _[screenshot placeholder]_ |
 
 ---
 
